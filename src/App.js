@@ -61,11 +61,11 @@ function App() {
 		set(dbRef, earthquakesData);
 	};
 
-	console.log(earthquakesData);
+	// console.log(earthquakesData);
 	return (
 		<div className="App">
 			<h1>Hello world!</h1>
-			<Map />
+			<Map earthquakesData={earthquakesData} />
 		</div>
 	);
 }
