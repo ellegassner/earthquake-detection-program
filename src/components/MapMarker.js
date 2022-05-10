@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 // import marker icon (this is a fix to ensure the marker renders properly)
 import * as L from "leaflet";
+
 // delete L.Icon.Default.prototype._getIconUrl;
 // L.Icon.Default.mergeOptions({
 // 	iconRetinaUrl: require(`../assets/blue-marker.png`),
@@ -41,25 +42,11 @@ const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 	// determine the color of the marker on the map based on magnitude
 	const pickMarkerColor = (hero) => {
 		// determine image path based on hero
-		let markerColor;
 		if (hero === "General Geology Teacher") {
-			markerColor = "teal";
-		} else if (hero === "Rich Moral") {
-			markerColor = "blue";
-		} else if (hero === "StrongGoode") {
-			markerColor = "purple";
-		} else {
-			markerColor = "dark-purple";
-		}
-		return markerColor;
-	};
-
-	const changeIcon = (markerColor) => {
-		if (markerColor === "blue") {
-			setIcon((current) => (current = blueIcon));
-		} else if (markerColor === "teal") {
 			setIcon((current) => (current = tealIcon));
-		} else if (markerColor === "purple") {
+		} else if (hero === "Rich Moral") {
+			setIcon((current) => (current = blueIcon));
+		} else if (hero === "StrongGoode") {
 			setIcon((current) => (current = purpleIcon));
 		} else {
 			setIcon((current) => (current = darkPurpleIcon));
@@ -68,8 +55,7 @@ const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 
 	useEffect(() => {
 		// pick the marker color based on hero
-		const markerColor = pickMarkerColor(hero);
-		changeIcon(markerColor);
+		pickMarkerColor(hero);
 	}, []);
 
 	return (
