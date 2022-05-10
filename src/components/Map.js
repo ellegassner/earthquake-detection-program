@@ -10,7 +10,7 @@ import MapMarker from "./MapMarker";
 
 const Map = ({ earthquakesData }) => {
 	const markerList = earthquakesData;
-	const markerListShort = markerList.slice(60, 100);
+	const markerListShort = markerList.slice(90, 100);
 
 	return (
 		<MapContainer
