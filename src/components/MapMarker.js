@@ -21,7 +21,7 @@ const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 		},
 	});
 
-	// create colored icons\
+	// create colored icons
 	const tealIcon = new LeafIcon({
 		iconUrl: require("../assets/teal-marker.png"),
 	});
@@ -32,7 +32,7 @@ const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 		iconUrl: require("../assets/purple-marker.png"),
 	});
 	const darkPurpleIcon = new LeafIcon({
-		iconUrl: require("../assets/purple-marker.png"),
+		iconUrl: require("../assets/dark-purple-marker.png"),
 	});
 
 	//  Use the state hook:

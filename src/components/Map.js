@@ -32,7 +32,7 @@ const Map = ({ earthquakesData }) => {
 				const incidentPlace = marker.properties.place;
 				// checks the magnitude against the hero ranges and return hero name
 				const assignHero = (incidentMag) => {
-					if (incidentMag > 0 && incidentMag < 3) {
+					if (incidentMag >= 0 && incidentMag < 3) {
 						return "General Geology Teacher";
 					} else if (incidentMag >= 3 && incidentMag < 6) {
 						return "Rich Moral";
