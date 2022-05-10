@@ -16,7 +16,7 @@ const Map = ({ earthquakesData }) => {
 		<MapContainer
 			className="map"
 			center={[51.505, -0.09]}
-			zoom={10}
+			zoom={1}
 			scrollWheelZoom={true}
 		>
 			<TileLayer
