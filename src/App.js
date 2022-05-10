@@ -15,7 +15,7 @@ function App() {
 
 	//function to get earthquake data from USGS API.
 	//startTime argument passed to the function, limits data to events on or after the specified start time
-	function getEqDataFromApi(startTime) {
+	const getEqDataFromApi = (startTime) => {
 		axios({
 			url: "https://earthquake.usgs.gov/fdsnws/event/1/query",
 			method: "GET",
