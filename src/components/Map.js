@@ -10,7 +10,11 @@ import MapMarker from "./MapMarker";
 
 const Map = ({ earthquakesData }) => {
 	const markerList = earthquakesData;
+<<<<<<< HEAD
 	const markerListShort = markerList.slice(90, 100);
+=======
+	// const markerListShort = markerList.slice(60, 100);
+>>>>>>> 7b39bf64aee03cfc271426290a111a0aeb9566bb
 
 	return (
 		<MapContainer
@@ -23,7 +27,7 @@ const Map = ({ earthquakesData }) => {
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
-			{markerListShort.map((marker) => {
+			{markerList.map((marker) => {
 				// grab the lat and long
 				const incidentLon = marker.geometry.coordinates[0];
 				const incidentLat = marker.geometry.coordinates[1];
@@ -32,7 +36,7 @@ const Map = ({ earthquakesData }) => {
 				const incidentPlace = marker.properties.place;
 				// checks the magnitude against the hero ranges and return hero name
 				const assignHero = (incidentMag) => {
-					if (incidentMag > 0 && incidentMag < 3) {
+					if (incidentMag >= 0 && incidentMag < 3) {
 						return "General Geology Teacher";
 					} else if (incidentMag >= 3 && incidentMag < 6) {
 						return "Rich Moral";
