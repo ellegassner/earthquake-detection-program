@@ -10,7 +10,7 @@ import MapMarker from "./MapMarker";
 
 const Map = ({ earthquakesData }) => {
 	const markerList = earthquakesData;
-	// const markerListShort = markerList.slice(0, 5);
+	const markerListShort = markerList.slice(60, 100);
 
 	return (
 		<MapContainer
@@ -23,7 +23,7 @@ const Map = ({ earthquakesData }) => {
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
-			{markerList.map((marker) => {
+			{markerListShort.map((marker) => {
 				// grab the lat and long
 				const incidentLon = marker.geometry.coordinates[0];
 				const incidentLat = marker.geometry.coordinates[1];
@@ -42,6 +42,7 @@ const Map = ({ earthquakesData }) => {
 						return "All";
 					}
 				};
+
 				const incidentHero = assignHero(incidentMag);
 
 				return (
