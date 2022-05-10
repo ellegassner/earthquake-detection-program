@@ -41,7 +41,6 @@ function App() {
 		hero1: incidentsHero1,
 		hero2: incidentsHero2,
 		hero3: incidentsHero3,
-		hero4: incidentsHero4
 	}
 
 	return (
