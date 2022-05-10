@@ -10,6 +10,7 @@ import {
 	remove,
 	set,
 	update,
+	get,
 } from "firebase/database";
 //modules
 import { useEffect, useState } from "react";
@@ -20,8 +21,12 @@ import Map from "./components/Map";
 
 function App() {
 	const [earthquakesData, setEarthquakesData] = useState([]);
+	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
 
 	const startDate = "2022-05-05"; //start tracking from project start date
+	let today = new Date();
+	let userDate = (today.toLocaleDateString("en-US"));
+	
 
 	//function to get earthquake data from USGS API.
 	//startTime argument passed to the function, limits data to events on or after the specified start time
@@ -47,6 +52,7 @@ function App() {
 
 	useEffect(() => {
 		loadDataToFirebase(earthquakesData);
+
 	}, [earthquakesData]);
 
 	useEffect(() => {
@@ -59,9 +65,27 @@ function App() {
 		const dbRef = ref(database, `/incidents/${startDate}`);
 
 		set(dbRef, earthquakesData);
+
+		// Getting Data from Firebase
+		get(dbRef).then((snapshot) => {
+			const firebaseData = snapshot.val();
+			const copyOfFirebaseData = [...firebaseData];
+
+			// Filtering through the Data
+			const todaysEarthquakeData = copyOfFirebaseData.filter((incident) => {
+				// Converting the time
+				let rawDate = new Date(incident.properties.time);
+				let convertedDate = (rawDate.toLocaleDateString("en-US"));
+
+				if(userDate === convertedDate) {
+					console.log("incident", incident, convertedDate);
+					// return incident;
+				}
+				// setTodaysEarthquakeData(todaysEarthquakeData);
+			})
+		})
 	};
 
-	// console.log(earthquakesData);
 	return (
 		<div className="App">
 			<h1>Hello world!</h1>
