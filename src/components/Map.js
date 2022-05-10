@@ -30,6 +30,19 @@ const Map = ({ earthquakesData }) => {
 				const incidentId = marker.id;
 				const incidentMag = marker.properties.mag;
 				const incidentPlace = marker.properties.place;
+				// checks the magnitude against the hero ranges and return hero name
+				const assignHero = (incidentMag) => {
+					if (incidentMag > 0 && incidentMag < 3) {
+						return "General Geology Teacher";
+					} else if (incidentMag >= 3 && incidentMag < 6) {
+						return "Rich Moral";
+					} else if (incidentMag >= 6 && incidentMag < 7) {
+						return "StrongGoode";
+					} else {
+						return "All";
+					}
+				};
+				const incidentHero = assignHero(incidentMag);
 
 				return (
 					// map over the list of coordinates, create a component for each
@@ -39,6 +52,7 @@ const Map = ({ earthquakesData }) => {
 						lon={incidentLon}
 						magnitude={incidentMag}
 						place={incidentPlace}
+						hero={incidentHero}
 					/>
 				);
 			})}

@@ -10,13 +10,15 @@ L.Icon.Default.mergeOptions({
 	shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-const MapMarker = ({ lat, lon, magnitude, place }) => {
+const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 	return (
 		<Marker position={[lat, lon]}>
 			<Popup>
 				Magnitude: {magnitude}
 				<br />
 				Place: {place}
+				<br />
+				Hero: {hero}
 			</Popup>
 		</Marker>
 	);
