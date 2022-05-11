@@ -76,20 +76,19 @@ function App() {
 				// Converting the time
 				let rawDate = new Date(incident.properties.time);
 				let convertedDate = (rawDate.toLocaleDateString("en-US"));
-
-				if(userDate === convertedDate) {
-					console.log("incident", incident, convertedDate);
-					// return incident;
-				}
-				// setTodaysEarthquakeData(todaysEarthquakeData);
-			})
+				
+				return userDate === convertedDate;
+			});
+			setTodaysEarthquakeData(todaysEarthquakeData);
 		})
 	};
+
+	console.log("today", todaysEarthquakeData);
 
 	return (
 		<div className="App">
 			<h1>Hello world!</h1>
-			<Map earthquakesData={earthquakesData} />
+			<Map earthquakesData={todaysEarthquakeData} />
 		</div>
 	);
 }
