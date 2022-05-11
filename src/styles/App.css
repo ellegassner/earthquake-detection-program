@@ -272,10 +272,55 @@ img {
      object-fit: cover;
 }
 
+img {
+  display: block;
+  height: 100%;
+}
+
 .map {
   height: 500px;
   width: 80%;
   max-width: 1000px;
   margin: 0 auto;
   border: 1px solid red;
+}
+
+.hero-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100px;
+  width: 200px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px 0;
+}
+.hero-total > div {
+  height: 100%;
+}
+
+.teal-legend,
+.purple-legend,
+.blue-legend,
+.dark-purple-legend {
+  width: 15px;
+}
+
+.teal-legend {
+  background-color: #00a9ae;
+}
+
+.purple-legend {
+  background-color: #45009f;
+}
+
+.blue-legend {
+  background-color: #008bb4;
+}
+
+.dark-purple-legend {
+  background-color: #008bb4;
 }

@@ -1,0 +1,36 @@
+.hero-total {
+    display:flex;
+    height: 100px;
+    width:200px;  
+    align-items: center;
+    justify-content: space-around;
+
+    &>div{
+        height:100%;
+    }
+
+    margin:10px 0;
+}
+
+.teal-legend,
+.purple-legend,
+.blue-legend,
+.dark-purple-legend {
+    width: 15px;
+}
+
+.teal-legend {
+    background-color: $clr-teal;
+}
+
+.purple-legend {
+    background-color: $clr-purple;
+}
+
+.blue-legend {
+    background-color: $clr-blue;
+}
+
+.dark-purple-legend {
+    background-color: $clr-blue;
+}
