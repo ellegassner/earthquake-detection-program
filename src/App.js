@@ -17,6 +17,7 @@ import axios from "axios";
 
 // components
 import Map from "./components/Map";
+import TotalEarthquakeDisplay from "./components/TotalEarthquakeDisplay";
 
 function App() {
 	const [earthquakesData, setEarthquakesData] = useState([]);
@@ -61,11 +62,37 @@ function App() {
 		set(dbRef, earthquakesData);
 	};
 
+	//dummy object containing heroes
+	const heroesSummary = [
+		{
+			name: "general geology-teacher",
+			totalIncidents: 3000,
+			incidentsOver24Hrs: 90,
+		},
+		{
+			name: "rich moral",
+			totalIncidents: 1000,
+			incidentsOver24Hrs: 50,
+		},
+		{
+			name: "stronggoode",
+			totalIncidents: 300,
+			incidentsOver24Hrs: 7,
+		},
+		{
+			name: "all",
+			totalIncidents: 4300,
+			incidentsOver24Hrs: 147,
+		},
+	];
+
+
 	// console.log(earthquakesData);
 	return (
 		<div className="App">
 			<h1>Hello world!</h1>
 			<Map earthquakesData={earthquakesData} />
+			<TotalEarthquakeDisplay heroesSummary={heroesSummary}/>
 		</div>
 	);
 }
