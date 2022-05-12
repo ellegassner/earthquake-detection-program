@@ -22,6 +22,8 @@ import Map from "./components/Map";
 function App() {
 	const [earthquakesData, setEarthquakesData] = useState([]);
 	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
+	const [todayTeal, setTodayTeal] = useState([]);
+	const [todayTealCount, setTodayTealCount] = useState(1);
 
 	const startDate = "2022-05-05"; //start tracking from project start date
 	let today = new Date();
@@ -81,9 +83,24 @@ function App() {
 			});
 			setTodaysEarthquakeData(todaysEarthquakeData);
 		})
-	};
 
-	console.log("today", todaysEarthquakeData);
+		const copyOfTodaysEarthQuakeData = [...todaysEarthquakeData];
+		const todayTeal = copyOfTodaysEarthQuakeData.filter((incident) => {
+			const incidentMag = incident.properties.mag;
+			if (incidentMag < 3) {
+				return incidentMag;
+			}
+		});
+		setTodayTeal(todayTeal);
+
+		
+		const todayTealCount = todayTeal.map((incident, id) => {
+			return id++;
+		})
+		setTodayTealCount(todayTealCount.length);
+	};
+	console.log(todayTealCount);
+	
 
 	return (
 		<div className="App">
