@@ -31,7 +31,6 @@ const HeroTotalDisplay = ({hero, total}) => {
     const heroColour = getHeroColour(hero);
     const heroImageSource = getHeroImageSrc(hero);
 
-    console.log(hero.toLowerCase());
     return(
         <div className="hero-total">
             <div className={`legend ${heroColour}-background`}></div>

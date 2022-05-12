@@ -25,6 +25,7 @@ function App() {
 	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
 	const [todaysCount, setTodaysCount] = useState([]);
 	const [totalCount, setTotalCount] = useState([]);
+	const [heroesSummary, setHeroesSummary] = useState([]);
 
 	const startDate = "2022-05-05"; //start tracking from project start date
 	let today = new Date();
@@ -70,6 +71,10 @@ function App() {
 	}, [earthquakesData]);
 
 	useEffect(() => {
+		getHeroesSummary();
+	}, [totalCount, todaysCount]);
+
+	useEffect(() => {
 		const todayTotalCount = getTotals(todaysEarthquakeData);
 		setTodaysCount(todayTotalCount);
 	}, [todaysEarthquakeData]);
@@ -86,31 +91,33 @@ function App() {
 		set(dbRef, earthquakesData);
 	};
 
-
-	//dummy object containing heroes
-	//TODO:update with totals from E/R
-	const heroesSummary = [
-		{
-			name: "general geology-teacher",
-			totalIncidents: 3000,
-			incidentsOver24Hrs: 90,
-		},
-		{
-			name: "rich moral",
-			totalIncidents: 1000,
-			incidentsOver24Hrs: 50,
-		},
-		{
-			name: "stronggoode",
-			totalIncidents: 300,
-			incidentsOver24Hrs: 7,
-		},
-		{
-			name: "all",
-			totalIncidents: 4300,
-			incidentsOver24Hrs: 147,
-		},
-	];
+	const getHeroesSummary = () => {
+		const summary = [
+			{
+				name: "general geology-teacher",
+				totalIncidents: totalCount.geoTeacher,
+				incidentsOver24Hrs: todaysCount.geoTeacher,
+			},
+			{
+				name: "rich moral",
+				totalIncidents: totalCount.richMoral,
+				incidentsOver24Hrs: todaysCount.richMoral,
+			},
+			{
+				name: "stronggoode",
+				totalIncidents: totalCount.strongGoode,
+				incidentsOver24Hrs: todaysCount.strongGoode,
+			},
+			{
+				name: "all",
+				totalIncidents: totalCount.allTeam,
+				incidentsOver24Hrs: todaysCount.allTeam,
+			},
+    	];
+		setHeroesSummary(summary);
+	}
+	
+	
 
 	const getDataFromFirebase = async() => {
 		const database = getDatabase(firebase);
@@ -174,23 +181,13 @@ function App() {
 		return heroTotals;
 	}
 
-
 	return (
 		<div className="App">
 			<h1>Hello world!</h1>
-
-			<Map earthquakesData={earthquakesData} />
-			<TotalEarthquakeDisplay heroesSummary={heroesSummary}/>
+			
 
 			<Map earthquakesData={todaysEarthquakeData} />
-			<p>Today Teal: {todaysCount.geoTeacher}</p>
-			<p>Total Teal: {totalCount.geoTeacher}</p>
-			<p>Today Blue: {todaysCount.richMoral}</p>
-			<p>Total Blue: {totalCount.richMoral}</p>
-			<p>Today Purple: {todaysCount.strongGoode}</p>
-			<p>Total Purple: {totalCount.strongGoode}</p>
-			<p>Today Dark Purple: {todaysCount.allTeam}</p>
-			<p>Total Dark Purple: {totalCount.allTeam}</p>
+			<TotalEarthquakeDisplay heroesSummary={heroesSummary}/>
 
 		</div>
 	);
