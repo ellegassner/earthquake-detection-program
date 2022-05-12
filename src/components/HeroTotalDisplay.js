@@ -41,7 +41,7 @@ const HeroTotalDisplay = ({hero, total}) => {
     console.log(hero.toLowerCase());
     return(
         <div className="hero-total">
-            <div className={`${heroColour}-legend`}></div>
+            <div className={`legend ${heroColour}-background`}></div>
             <div><img src={heroImageSource} alt={`icon for ${hero}`} /></div>
             <p>{total}</p>
         </div>

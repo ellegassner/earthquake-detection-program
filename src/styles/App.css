@@ -277,6 +277,22 @@ img {
   height: 100%;
 }
 
+.teal-background {
+  background-color: #00a9ae;
+}
+
+.purple-background {
+  background-color: #45009f;
+}
+
+.blue-background {
+  background-color: #008bb4;
+}
+
+.dark-purple-background {
+  background-color: #22014D;
+}
+
 .map {
   height: 500px;
   width: 80%;
@@ -302,25 +318,6 @@ img {
   height: 100%;
 }
 
-.teal-legend,
-.purple-legend,
-.blue-legend,
-.dark-purple-legend {
+.legend {
   width: 15px;
-}
-
-.teal-legend {
-  background-color: #00a9ae;
-}
-
-.purple-legend {
-  background-color: #45009f;
-}
-
-.blue-legend {
-  background-color: #008bb4;
-}
-
-.dark-purple-legend {
-  background-color: #008bb4;
 }

@@ -63,6 +63,7 @@ function App() {
 	};
 
 	//dummy object containing heroes
+	//TODO:update with totals from E/R
 	const heroesSummary = [
 		{
 			name: "general geology-teacher",
