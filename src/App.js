@@ -30,7 +30,8 @@ function App() {
 
 	const startDate = "2022-05-05"; //start tracking from project start date
 	let today = new Date();
-	let userDate = today.toLocaleDateString("en-US");
+	let yesterday = new Date(today.getTime() - 86400000);
+	let convertedYesterday = yesterday.getTime();
 
 	//function to get earthquake data from USGS API.
 	//startTime argument passed to the function, limits data to events on or after the specified start time
@@ -51,7 +52,6 @@ function App() {
 			.then((response) => {
 				const listOfEarthquakes = response.data.features;
 				setEarthquakesData(listOfEarthquakes);
-				console.log(listOfEarthquakes);
 			})
 
 			// Error 2: USGS API Call fails
@@ -156,12 +156,10 @@ function App() {
 			// Filtering through the Data
 			const todaysEarthquakeData = copyOfFirebaseData.filter(
 				(incident) => {
-					// Converting the time
-					let rawDate = new Date(incident.properties.time);
-					let convertedDate = rawDate.toLocaleDateString("en-US");
+					let eventDate = incident.properties.time;
 
-					return userDate === convertedDate;
-				}
+					return convertedYesterday <= eventDate;
+					}
 			);
 			setTodaysEarthquakeData(todaysEarthquakeData);
 		});
