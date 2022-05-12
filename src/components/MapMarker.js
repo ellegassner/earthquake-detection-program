@@ -22,6 +22,10 @@ const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 		},
 	});
 
+	// Error 7: Markers fail to load
+	// When the map is rendered, the markers don't display correctly
+	// Add some alt text for each marker, to handle this edge case
+
 	// create colored icons
 	const tealIcon = new LeafIcon({
 		iconUrl: require("../assets/teal-marker.png"),

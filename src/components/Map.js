@@ -1,6 +1,5 @@
 // modules
 import { MapContainer, TileLayer } from "react-leaflet";
-import { useEffect, useState } from "react";
 
 // map styling
 import "leaflet/dist/leaflet.css";
@@ -10,7 +9,6 @@ import MapMarker from "./MapMarker";
 
 const Map = ({ earthquakesData }) => {
 	const markerList = earthquakesData;
-	const markerListShort = markerList.slice(90, 100);
 
 	return (
 		<MapContainer
@@ -19,10 +17,18 @@ const Map = ({ earthquakesData }) => {
 			zoom={1}
 			scrollWheelZoom={true}
 		>
+			{/* Error 6: If TileLayer link is dead
+			// TileLayer component will throw a "get" request error
+			// try...catch error, alert user that the map didn't load correctly
+			// due to the tilelayer being down.
+			*/}
+
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
+
+			{/* Render the markers */}
 			{markerList.map((marker) => {
 				// grab the lat and long
 				const incidentLon = marker.geometry.coordinates[0];
