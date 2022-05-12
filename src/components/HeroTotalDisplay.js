@@ -1,13 +1,6 @@
 
 const HeroTotalDisplay = ({hero, total}) => {
 
-    // const hero = {
-    //     name: "General Geology-Teacher",
-    //     imageSrc:"",
-    //     color:"teal",
-    //     total:10
-    // }
-
     const getHeroColour = (hero) => {
         let color;
         switch (hero.toLowerCase()) {
