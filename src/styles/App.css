@@ -272,10 +272,52 @@ img {
      object-fit: cover;
 }
 
+img {
+  display: block;
+  height: 100%;
+}
+
+.teal-background {
+  background-color: #00a9ae;
+}
+
+.purple-background {
+  background-color: #45009f;
+}
+
+.blue-background {
+  background-color: #008bb4;
+}
+
+.dark-purple-background {
+  background-color: #22014D;
+}
+
 .map {
   height: 500px;
   width: 80%;
   max-width: 1000px;
   margin: 0 auto;
   border: 1px solid red;
+}
+
+.hero-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100px;
+  width: 200px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px 0;
+}
+.hero-total > div {
+  height: 100%;
+}
+
+.legend {
+  width: 15px;
 }

@@ -1,0 +1,17 @@
+.hero-total {
+    display:flex;
+    height: 100px;
+    width:200px;  
+    align-items: center;
+    justify-content: space-around;
+
+    &>div{
+        height:100%;
+    }
+
+    margin:10px 0;
+}
+
+.legend {
+    width: 15px;
+}

@@ -18,6 +18,7 @@ import axios from "axios";
 
 // components
 import Map from "./components/Map";
+import TotalEarthquakeDisplay from "./components/TotalEarthquakeDisplay";
 
 function App() {
 	const [earthquakesData, setEarthquakesData] = useState([]);
@@ -85,6 +86,32 @@ function App() {
 		set(dbRef, earthquakesData);
 	};
 
+
+	//dummy object containing heroes
+	//TODO:update with totals from E/R
+	const heroesSummary = [
+		{
+			name: "general geology-teacher",
+			totalIncidents: 3000,
+			incidentsOver24Hrs: 90,
+		},
+		{
+			name: "rich moral",
+			totalIncidents: 1000,
+			incidentsOver24Hrs: 50,
+		},
+		{
+			name: "stronggoode",
+			totalIncidents: 300,
+			incidentsOver24Hrs: 7,
+		},
+		{
+			name: "all",
+			totalIncidents: 4300,
+			incidentsOver24Hrs: 147,
+		},
+	];
+
 	const getDataFromFirebase = async() => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/incidents/${startDate}`);
@@ -147,9 +174,14 @@ function App() {
 		return heroTotals;
 	}
 
+
 	return (
 		<div className="App">
 			<h1>Hello world!</h1>
+
+			<Map earthquakesData={earthquakesData} />
+			<TotalEarthquakeDisplay heroesSummary={heroesSummary}/>
+
 			<Map earthquakesData={todaysEarthquakeData} />
 			<p>Today Teal: {todaysCount.geoTeacher}</p>
 			<p>Total Teal: {totalCount.geoTeacher}</p>
@@ -159,6 +191,7 @@ function App() {
 			<p>Total Purple: {totalCount.strongGoode}</p>
 			<p>Today Dark Purple: {todaysCount.allTeam}</p>
 			<p>Total Dark Purple: {totalCount.allTeam}</p>
+
 		</div>
 	);
 }
