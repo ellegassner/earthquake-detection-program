@@ -17,10 +17,10 @@ const TodaysTotalHeroDisplay = ({hero, total}) => {
     const heroColour = getHeroColour(hero);
 
     return(
-        <div className="today-total">
+        <li className="today-total">
             <div className={`legendBottom ${heroColour}-background`}> <p>{total}</p>
             </div>
-        </div>
+        </li>
     )
 }
 
