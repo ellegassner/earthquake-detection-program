@@ -19,6 +19,7 @@ import axios from "axios";
 // components
 import Map from "./components/Map";
 import TotalEarthquakeDisplay from "./components/TotalEarthquakeDisplay";
+import TodaysEarthquakeDisplay from "./components/TodaysEarthquakeDisplay";
 
 function App() {
 	const [earthquakesData, setEarthquakesData] = useState([]);
@@ -188,6 +189,7 @@ function App() {
 
 			<Map earthquakesData={todaysEarthquakeData} />
 			<TotalEarthquakeDisplay heroesSummary={heroesSummary}/>
+			<TodaysEarthquakeDisplay heroesSummary={heroesSummary}/>
 
 		</div>
 	);

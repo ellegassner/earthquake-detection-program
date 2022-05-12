@@ -6,17 +6,19 @@ const TotalEarthquakeDisplay = ({heroesSummary}) => {
     return (
         <div>
             <h2>Total earthquake incidents since May 5, 2022</h2>
-            {
-                heroesSummary.map(hero => {
-                    return (
-                        <HeroTotalDisplay
-                            key={hero.name}
-                            hero={hero.name}
-                            total={hero.totalIncidents}
-                        />
-                    );
-                })
-            }
+            <ul>
+                {
+                    heroesSummary.map(hero => {
+                        return (
+                            <HeroTotalDisplay
+                                key={hero.name}
+                                hero={hero.name}
+                                total={hero.totalIncidents}
+                            />
+                        );
+                    })
+                }
+            </ul>
         </div>
     );
 }

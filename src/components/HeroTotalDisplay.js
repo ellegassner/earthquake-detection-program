@@ -32,11 +32,11 @@ const HeroTotalDisplay = ({hero, total}) => {
     const heroImageSource = getHeroImageSrc(hero);
 
     return(
-        <div className="hero-total">
+        <li className="hero-total">
             <div className={`legend ${heroColour}-background`}></div>
             <div><img src={heroImageSource} alt={`icon for ${hero}`} /></div>
             <p>{total}</p>
-        </div>
+        </li>
     )
 }
 
