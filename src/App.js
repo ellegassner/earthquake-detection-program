@@ -5,11 +5,7 @@ import firebase from "./firebase";
 import {
 	getDatabase,
 	ref,
-	onValue,
-	push,
-	remove,
 	set,
-	update,
 	get,
 } from "firebase/database";
 //modules
@@ -70,41 +66,6 @@ function App() {
 			.catch((err) => console.log(err));
 	};
 
-	useEffect(() => {
-		const fetchData = async () => {
-			function sleep(ms) {
-				return new Promise((resolve) => setTimeout(resolve, ms));
-			}
-
-			setIsLoading(true);
-			await loadDataToFirebase(earthquakesData);
-			await sleep(1000);
-			await getDataFromFirebase();
-			// Error 1: API loading indicator
-			// When page loads, isLoading state value = true
-			// Once the functions above are done running (3 promises), toggle isLoading state = false
-			// When this happens, conditionally render "loading" modal/element
-
-			const allTotalCount = getTotals(earthquakesData);
-			setTotalCount(allTotalCount);
-			setIsLoading(false);
-		};
-		fetchData();
-	}, [earthquakesData]);
-
-	useEffect(() => {
-		getHeroesSummary();
-	}, [totalCount, todaysCount]);
-
-	useEffect(() => {
-		const todayTotalCount = getTotals(todaysEarthquakeData);
-		setTodaysCount(todayTotalCount);
-	}, [todaysEarthquakeData]);
-
-	useEffect(() => {
-		getEqDataFromApi(startDate);
-	}, []);
-
 	// Firebase Database
 	const loadDataToFirebase = async (earthquakesData) => {
 		const database = getDatabase(firebase);
@@ -120,32 +81,6 @@ function App() {
 			alert("Firebase data has failed to load. Please refresh your browser.");
 		}
 
-	};
-
-	const getHeroesSummary = () => {
-		const summary = [
-			{
-				name: "general geology-teacher",
-				totalIncidents: totalCount.geoTeacher,
-				incidentsOver24Hrs: todaysCount.geoTeacher,
-			},
-			{
-				name: "rich moral",
-				totalIncidents: totalCount.richMoral,
-				incidentsOver24Hrs: todaysCount.richMoral,
-			},
-			{
-				name: "stronggoode",
-				totalIncidents: totalCount.strongGoode,
-				incidentsOver24Hrs: todaysCount.strongGoode,
-			},
-			{
-				name: "all",
-				totalIncidents: totalCount.allTeam,
-				incidentsOver24Hrs: todaysCount.allTeam,
-			},
-		];
-		setHeroesSummary(summary);
 	};
 
 	const getDataFromFirebase = async () => {
@@ -164,22 +99,22 @@ function App() {
 				const copyOfFirebaseData = [...firebaseData];
 
 				// Filtering through the Data
-				const todaysEarthquakeData = copyOfFirebaseData.filter(
+				const todaysData = copyOfFirebaseData.filter(
 					(incident) => {
 						let eventDate = incident.properties.time;
 
 						return convertedYesterday <= eventDate;
 					}
 				);
-				setTodaysEarthquakeData(todaysEarthquakeData);
+				setTodaysEarthquakeData(todaysData);
 			});
 		} catch (error) {
 			alert("Firebase data has failed to load. Please refresh your browser.");
 		}
 	};
 
-	const getTotals = (earthquakesData) => {
-		const copyOfEarthQuakeData = [...earthquakesData];
+	const getTotals = (earthquakesList) => {
+		const copyOfEarthQuakeData = [...earthquakesList];
 
 		const teal = copyOfEarthQuakeData.filter((incident) => {
 			const incidentMag = incident.properties.mag;
@@ -217,6 +152,67 @@ function App() {
 		};
 		return heroTotals;
 	};
+
+	const getHeroesSummary = () => {
+		const summary = [
+			{
+				name: "general geology-teacher",
+				totalIncidents: totalCount.geoTeacher,
+				incidentsOver24Hrs: todaysCount.geoTeacher,
+			},
+			{
+				name: "rich moral",
+				totalIncidents: totalCount.richMoral,
+				incidentsOver24Hrs: todaysCount.richMoral,
+			},
+			{
+				name: "stronggoode",
+				totalIncidents: totalCount.strongGoode,
+				incidentsOver24Hrs: todaysCount.strongGoode,
+			},
+			{
+				name: "all",
+				totalIncidents: totalCount.allTeam,
+				incidentsOver24Hrs: todaysCount.allTeam,
+			},
+		];
+		setHeroesSummary(summary);
+	};
+
+	useEffect(() => {
+		getEqDataFromApi(startDate);
+	}, []);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			function sleep(ms) {
+				return new Promise((resolve) => setTimeout(resolve, ms));
+			}
+
+			setIsLoading(true);
+			await loadDataToFirebase(earthquakesData);
+			await sleep(1000);
+			await getDataFromFirebase();
+			// Error 1: API loading indicator
+			// When page loads, isLoading state value = true
+			// Once the functions above are done running (3 promises), toggle isLoading state = false
+			// When this happens, conditionally render "loading" modal/element
+
+			const allTotalCount = getTotals(earthquakesData);
+			setTotalCount(allTotalCount);
+			setIsLoading(false);
+		};
+		fetchData();
+	}, [earthquakesData]);
+
+	useEffect(() => {
+		const todayTotalCount = getTotals(todaysEarthquakeData);
+		setTodaysCount(todayTotalCount);
+	}, [todaysEarthquakeData]);
+
+	useEffect(() => {
+		getHeroesSummary();
+	}, [totalCount, todaysCount]);
 
 	return (
 		<div className="App">
