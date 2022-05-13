@@ -1,3 +1,4 @@
+import { Link, Outlet } from 'react-router-dom';
 
 const HeroTotalDisplay = ({hero, total}) => {
 
@@ -32,10 +33,13 @@ const HeroTotalDisplay = ({hero, total}) => {
     const heroImageSource = getHeroImageSrc(hero);
 
     return(
-        <li className="hero-total">
-            <div className={`legend ${heroColour}-background`}></div>
-            <div><img src={heroImageSource} alt={`icon for ${hero}`} /></div>
-            <p>{total}</p>
+        <li>
+            <Link to='/mappage/heroprofile' className="hero-total">
+                <div className={`legend ${heroColour}-background`}></div>
+                <div><img src={heroImageSource} alt={`icon for ${hero}`} /></div>
+                <p>{total}</p>
+            </Link>
+            <Outlet />
         </li>
     )
 }
