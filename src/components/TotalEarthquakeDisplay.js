@@ -2,10 +2,10 @@ import HeroTotalDisplay from "./HeroTotalDisplay";
 
 // prop - heroesSummary array of objects with heros and total incidents (overall and over the past 24hrs)
 // map over array to display
-const TotalEarthquakeDisplay = ({heroesSummary}) => {
+const TotalEarthquakeDisplay = ({heroesSummary, firstIncidentDate}) => {
     return (
         <div>
-            <h2>Total earthquake incidents since May 5, 2022</h2>
+            <h2>Total earthquake incidents since {firstIncidentDate}</h2>
             <ul>
                 {
                     heroesSummary.map(hero => {

@@ -23,6 +23,7 @@ function App() {
 	const [todaysCount, setTodaysCount] = useState([]);
 	const [totalCount, setTotalCount] = useState([]);
 	const [heroesSummary, setHeroesSummary] = useState([]);
+	const [firstIncidentDate, setFirstIncidentDate] = useState([]);
 
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -48,8 +49,18 @@ function App() {
 			},
 		})
 			.then((response) => {
-				const listOfEarthquakes = response.data.features;
-				setEarthquakesData(listOfEarthquakes);
+				if(response.status === 200) {
+					const listOfEarthquakes = response.data.features;
+					setEarthquakesData(listOfEarthquakes);
+
+					const firstDate = new Date(listOfEarthquakes[listOfEarthquakes.length - 1].properties.time);
+					const displayDate = firstDate.toDateString();
+					setFirstIncidentDate(displayDate);
+
+				} else {
+					throw new Error();
+				}
+				
 			})
 
 			// Error 2: USGS API Call fails
@@ -63,7 +74,9 @@ function App() {
 			// target its time property, convert the time into a date, and then render that date
 			// to the page as X, for example: "Total earthquake incidents since X"
 
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				alert(`USGS API call failed. Please hard refresh your browser with CTRL/CMD + SHIFT + R. Here is the error message : ${err.message}`);
+			});
 	};
 
 	// Firebase Database
@@ -222,7 +235,7 @@ function App() {
 				) : (
 					<>
 						<Map earthquakesData={todaysEarthquakeData} />
-						<TotalEarthquakeDisplay heroesSummary={heroesSummary} />
+						<TotalEarthquakeDisplay heroesSummary={heroesSummary} firstIncidentDate={firstIncidentDate} />
 						<TodaysEarthquakeDisplay heroesSummary={heroesSummary} />
 					</>
 					
