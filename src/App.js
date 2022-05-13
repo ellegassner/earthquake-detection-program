@@ -28,6 +28,8 @@ function App() {
 	const [totalCount, setTotalCount] = useState([]);
 	const [heroesSummary, setHeroesSummary] = useState([]);
 
+	const [isLoading, setIsLoading] = useState(false);
+
 	const startDate = "2022-05-05"; //start tracking from project start date
 	let today = new Date();
 	let yesterday = new Date(today.getTime() - 86400000);
@@ -50,7 +52,6 @@ function App() {
 			},
 		})
 			.then((response) => {
-				console.log("response", response.config.params.limit)
 				const listOfEarthquakes = response.data.features;
 				setEarthquakesData(listOfEarthquakes);
 			})
@@ -65,7 +66,9 @@ function App() {
 			// If the limit is reached, grab the item at the end of the response object array,
 			// target its time property, convert the time into a date, and then render that date
 			// to the page as X, for example: "Total earthquake incidents since X"
-	}
+
+			.catch((err) => console.log(err));
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -73,6 +76,7 @@ function App() {
 				return new Promise((resolve) => setTimeout(resolve, ms));
 			}
 
+			setIsLoading(true);
 			await loadDataToFirebase(earthquakesData);
 			await sleep(1000);
 			await getDataFromFirebase();
@@ -83,6 +87,7 @@ function App() {
 
 			const allTotalCount = getTotals(earthquakesData);
 			setTotalCount(allTotalCount);
+			setIsLoading(false);
 		};
 		fetchData();
 	}, [earthquakesData]);
@@ -215,11 +220,18 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>Hello world!</h1>
-
-			<Map earthquakesData={todaysEarthquakeData} />
-			<TotalEarthquakeDisplay heroesSummary={heroesSummary} />
-			<TodaysEarthquakeDisplay heroesSummary={heroesSummary} />
+			{
+				isLoading ? (
+					<p>Loading... Please wait</p>
+				) : (
+					<>
+						<Map earthquakesData={todaysEarthquakeData} />
+						<TotalEarthquakeDisplay heroesSummary={heroesSummary} />
+						<TodaysEarthquakeDisplay heroesSummary={heroesSummary} />
+					</>
+					
+				)
+			}
 		</div>
 	);
 }
