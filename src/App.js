@@ -50,6 +50,7 @@ function App() {
 			},
 		})
 			.then((response) => {
+				console.log("response", response.config.params.limit)
 				const listOfEarthquakes = response.data.features;
 				setEarthquakesData(listOfEarthquakes);
 			})
@@ -64,9 +65,7 @@ function App() {
 			// If the limit is reached, grab the item at the end of the response object array,
 			// target its time property, convert the time into a date, and then render that date
 			// to the page as X, for example: "Total earthquake incidents since X"
-
-			.catch((err) => console.log(err));
-	};
+	}
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -106,11 +105,16 @@ function App() {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/incidents/${startDate}`);
 
-		set(dbRef, earthquakesData);
 		// Error 4: Firebase "set" method fails
 		// Wrap the "set" method in a try...catch code block
 		// If the try succeeds (i.e. sets the earthquake data at the dbRef), do nothing
 		// If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
+		try {
+			set(dbRef, earthquakesData);
+		} catch (error) {
+			alert("Firebase data has failed to load. Please refresh your browser.");
+		}
+
 	};
 
 	const getHeroesSummary = () => {
@@ -149,20 +153,24 @@ function App() {
 		// If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
 
 		// Getting Data from Firebase
-		get(dbRef).then((snapshot) => {
-			const firebaseData = snapshot.val();
-			const copyOfFirebaseData = [...firebaseData];
+		try {
+			get(dbRef).then((snapshot) => {
+				const firebaseData = snapshot.val();
+				const copyOfFirebaseData = [...firebaseData];
 
-			// Filtering through the Data
-			const todaysEarthquakeData = copyOfFirebaseData.filter(
-				(incident) => {
-					let eventDate = incident.properties.time;
+				// Filtering through the Data
+				const todaysEarthquakeData = copyOfFirebaseData.filter(
+					(incident) => {
+						let eventDate = incident.properties.time;
 
-					return convertedYesterday <= eventDate;
+						return convertedYesterday <= eventDate;
 					}
-			);
-			setTodaysEarthquakeData(todaysEarthquakeData);
-		});
+				);
+				setTodaysEarthquakeData(todaysEarthquakeData);
+			});
+		} catch (error) {
+			alert("Firebase data has failed to load. Please refresh your browser.");
+		}
 	};
 
 	const getTotals = (earthquakesData) => {
