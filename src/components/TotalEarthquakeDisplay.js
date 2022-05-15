@@ -14,6 +14,7 @@ const TotalEarthquakeDisplay = ({heroesSummary, firstIncidentDate}) => {
                                 key={hero.name}
                                 hero={hero.name}
                                 total={hero.totalIncidents}
+                                bio={hero.bio}
                             />
                         );
                     })

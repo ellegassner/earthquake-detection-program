@@ -171,21 +171,25 @@ const MapPage = ({}) => {
                 name: "general geology-teacher",
                 totalIncidents: totalCount.geoTeacher,
                 incidentsOver24Hrs: todaysCount.geoTeacher,
+                bio: "The geology teacher has been sent to educate the neighbourhood on earthquake tendencies and how to prepare for any larger event."
             },
             {
                 name: "rich moral",
                 totalIncidents: totalCount.richMoral,
                 incidentsOver24Hrs: todaysCount.richMoral,
+                bio: "With their flashy technology, Rich Moral will be able to reassure the public with earthquakes that have a higher magnitude."
             },
             {
                 name: "stronggoode",
                 totalIncidents: totalCount.strongGoode,
                 incidentsOver24Hrs: todaysCount.strongGoode,
+                bio: "With unnatural lifting abilities, StrongGood will be able to handle any crisis and will reassure the public there is nothing to fear."
             },
             {
                 name: "all",
                 totalIncidents: totalCount.allTeam,
                 incidentsOver24Hrs: todaysCount.allTeam,
+                bio: "With the strongest earthquakes, we send our entire team of superheroes to ensure safety and peace of mind to the public."
             },
         ];
         setHeroesSummary(summary);

@@ -1,6 +1,6 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const HeroTotalDisplay = ({hero, total}) => {
+const HeroTotalDisplay = ({hero, total, bio}) => {
 
     const getHeroColour = (hero) => {
         let color;
@@ -32,14 +32,19 @@ const HeroTotalDisplay = ({hero, total}) => {
     const heroColour = getHeroColour(hero);
     const heroImageSource = getHeroImageSrc(hero);
 
+    const heroData = {
+        hero: {hero},
+        bio: {bio},
+    };
+
+
     return(
         <li>
-            <Link to='/mappage/heroprofile' className="hero-total">
+            <Link to={'/heroprofile'} state={heroData} className="hero-total">
                 <div className={`legend ${heroColour}-background`}></div>
                 <div><img src={heroImageSource} alt={`icon for ${hero}`} /></div>
                 <p>{total}</p>
             </Link>
-            <Outlet />
         </li>
     )
 }
