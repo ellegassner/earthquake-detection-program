@@ -3,10 +3,15 @@
     height: 100vh;
     text-align: center;
 
+    .wrapper {
+        background-color: $clr-black;
+    }
+
     img {
-        width: 85%;
+        width: 75%;
+        height: 400px;
         margin: 0 auto;
-        margin-top: -150px;
+        margin-top: -90px;
     }
 
     h1 {
@@ -41,7 +46,8 @@
 
     a {
         font-family: $ff-secondary;
-        font-weight: bold;
+        font-size: $fs-200;
+        font-weight: $fw-bold;
         display: block;
         color: white;
         text-transform: uppercase;

@@ -232,7 +232,7 @@ const MapPage = ({}) => {
                 isLoading ? (
                     <p>Loading... Please wait</p>
                 ) : (
-                    <div className="wrapper">
+                    <div>
                         <div className="map-page">
                             <Map earthquakesData={todaysEarthquakeData} />
                             <div className="legend-container">

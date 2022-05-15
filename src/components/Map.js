@@ -13,8 +13,8 @@ const Map = ({ earthquakesData }) => {
 	return (
 		<MapContainer
 			className="map"
-			center={[51.505, -0.09]}
-			zoom={1}
+			center={[12.97229395161727, -12.825540370374128]}
+			zoom={1.5}
 			scrollWheelZoom={true}
 		>
 			{/* Error 6: If TileLayer link is dead
