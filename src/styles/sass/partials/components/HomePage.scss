@@ -1,0 +1,49 @@
+.homePage {
+    background-color: $clr-black;
+    height: 100vh;
+    text-align: center;
+
+    img {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: -150px;
+    }
+
+    h1 {
+        padding-top: 200px;
+        color: $clr-white;
+        margin: 0;
+    }
+
+    .title {
+        display: block;
+        text-transform: uppercase;
+        font-size: 49px;
+    }
+
+    .left-align,
+    .right-align {
+        font-family: $ff-secondary;
+        display: block;
+    }
+
+    .right-align {
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .left-align {
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    a {
+        display: block;
+        color: white;
+        text-transform: uppercase;
+        border: 2px solid $clr-white;
+        width: 25%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+}

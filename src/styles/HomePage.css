@@ -1,0 +1,23 @@
+.homePage {
+  background-color: black;
+  height: 100vh;
+}
+.homePage img {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: -100px;
+}
+.homePage h1 {
+  padding-top: 100px;
+  color: white;
+  margin: 0;
+}
+.homePage .title {
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+}
+.homePage .right-align {
+  display: block;
+  text-align: right;
+}
