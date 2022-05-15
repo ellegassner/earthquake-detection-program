@@ -1,0 +1,17 @@
+.legendBottom {
+    p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $clr-white;
+        font-weight: $fw-bold;
+        font-size: 20px;
+        height: 50px;
+        width: 50px;
+    }
+}
+
+.today-total {
+    display: inline-block;
+    margin: 15px;
+}

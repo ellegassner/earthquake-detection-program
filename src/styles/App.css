@@ -293,6 +293,12 @@ img {
   background-color: #22014D;
 }
 
+.App {
+  max-width: 1260px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .map {
   height: 500px;
   width: 80%;
