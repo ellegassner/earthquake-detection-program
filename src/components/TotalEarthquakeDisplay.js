@@ -4,7 +4,7 @@ import HeroTotalDisplay from "./HeroTotalDisplay";
 // map over array to display
 const TotalEarthquakeDisplay = ({heroesSummary, firstIncidentDate}) => {
     return (
-        <div>
+        <div className="total-display">
             <h2>Total earthquake incidents since {firstIncidentDate}</h2>
             <ul>
                 {

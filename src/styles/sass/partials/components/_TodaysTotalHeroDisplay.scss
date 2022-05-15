@@ -13,5 +13,19 @@
 
 .today-total {
     display: inline-block;
-    margin: 15px;
+    margin: 10px;
+}
+
+.todays-display {
+    h3 {
+        background-color: $clr-black;
+        color: $clr-white;
+        text-align: center;
+        padding: 30px;
+        font-weight: normal;
+    }
+
+    ul {
+        text-align: center;
+    }
 }

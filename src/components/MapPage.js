@@ -232,11 +232,16 @@ const MapPage = ({}) => {
                 isLoading ? (
                     <p>Loading... Please wait</p>
                 ) : (
-                    <>
-                        <Map earthquakesData={todaysEarthquakeData} />
-                        <TotalEarthquakeDisplay heroesSummary={heroesSummary} firstIncidentDate={firstIncidentDate} />
-                        <TodaysEarthquakeDisplay heroesSummary={heroesSummary} />
-                    </>
+                    <div className="wrapper">
+                        <div className="map-page">
+                            <Map earthquakesData={todaysEarthquakeData} />
+                            <div className="legend-container">
+                                <TotalEarthquakeDisplay heroesSummary={heroesSummary} firstIncidentDate={firstIncidentDate} />
+                                <TodaysEarthquakeDisplay heroesSummary={heroesSummary} />
+                            </div>
+                            
+                        </div>
+                    </div>
                 )
             }
         </div>
