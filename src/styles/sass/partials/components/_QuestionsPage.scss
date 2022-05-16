@@ -1,6 +1,6 @@
 .questions-page {
     background-color: $clr-black;
-    height: 100vh;
+    height: 920px;
     text-align: center;
     color: $clr-white;
 
@@ -10,7 +10,7 @@
     }
 
     h2 {
-        font-size: 40px;
+        font-size: $fs-650;
         text-transform: uppercase;
         position: relative;
         padding-bottom: 50px;
@@ -31,9 +31,9 @@
 
     p {
         font-family: $ff-secondary;
-        font-size: 25px;
+        font-size: $fs-500;
         padding: 33px 0;
-        line-height: 32px;
+        line-height: $lh-100;
     }
 
     span {
