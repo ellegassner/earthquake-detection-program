@@ -426,7 +426,7 @@ a {
 
 .home-page {
   background-color: #000000;
-  height: 100vh;
+  height: 920px;
   text-align: center;
 }
 .home-page .wrapper {
@@ -478,7 +478,7 @@ a {
 
 .questions-page {
   background-color: #000000;
-  height: 100vh;
+  height: 920px;
   text-align: center;
   color: #ffffff;
 }

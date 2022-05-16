@@ -33,8 +33,9 @@ const HeroTotalDisplay = ({hero, total, bio}) => {
     const heroImageSource = getHeroImageSrc(hero);
 
     const heroData = {
-        hero: {hero},
-        bio: {bio},
+        hero: hero,
+        bio: bio,
+        total: total,
     };
 
 
