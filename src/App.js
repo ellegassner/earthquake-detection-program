@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import QuestionsPage from "./components/QuestionsPage";
 import MapPage from "./components/MapPage";
 import HeroProfile from "./components/HeroProfile";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
 				<Route path='/questionspage' element={<QuestionsPage />} />
 				<Route path='/mappage' element={<MapPage />} />
 				<Route path='/heroprofile/' element={<HeroProfile />} />
+				<Route path="/*" element={ <ErrorPage /> } />
 			</Routes>
 		</div>
 	);

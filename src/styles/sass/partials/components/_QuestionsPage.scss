@@ -38,5 +38,21 @@
 
 	span {
 		display: block;
+		padding: 10px 0;
+	}
+
+	nav {
+		text-align: left;
+		padding-top: 20px;
+		
+		a {
+			font-size: $fs-600;
+			color: $clr-white;
+
+			&:hover,
+			&:focus {
+				color: $clr-teal;
+			}
+		}
 	}
 }
