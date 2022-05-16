@@ -18,3 +18,16 @@ img {
 .dark-purple-background {
     background-color: $clr-dark-purple;
 }
+
+.btn {
+    font-family: $ff-secondary;
+    font-size: $fs-200;
+    font-weight: $fw-bold;
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    border: 2px solid $clr-white;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+}

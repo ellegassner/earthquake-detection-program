@@ -1,10 +1,31 @@
-import { Route, Routes, Link, useParams, Outlet } from 'react-router-dom';
-
+import { Link, useLocation } from "react-router-dom";
 
 const HeroProfile = () => {
-    return (   
-        <h1>Whale Hello!</h1>
-    )
-}
+	// useLocation hook to access the location of state property from HeroTotalDisplay component
+	let location = useLocation();
+	const data = location.state;
+	// Calculated accrued vacation days
+	const vacationDays = Math.floor(data.total / 30);
+
+	return (
+		<div className="hero-profile-page">
+			<div className="wrapper">
+				<Link to="/mappage">X</Link>
+
+				<h1>{data.hero}</h1>
+				<h3>Successfully Deployed</h3>
+				<p>{data.bio}</p>
+				<p>Total earthquakes attended: {data.total}</p>
+				<p>Vacation days accrued: {vacationDays}</p>
+				<div>
+					<img src={data.fullImage.src} alt="" />
+				</div>
+				<div>
+					<img src={data.shieldImage.src} alt="" />
+				</div>
+			</div>
+		</div>
+	);
+};
 
 export default HeroProfile;

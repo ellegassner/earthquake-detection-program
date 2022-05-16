@@ -1,0 +1,46 @@
+.home-page {
+	background-color: $clr-black;
+	height: 1200px;
+	text-align: center;
+
+	.wrapper {
+		background-color: $clr-black;
+	}
+
+	img {
+		width: 75%;
+		height: 400px;
+		margin: 0 auto;
+		margin-top: -90px;
+	}
+
+	h1 {
+		padding-top: 200px;
+		color: $clr-white;
+		margin: 0;
+	}
+
+	.title {
+		display: block;
+		text-transform: uppercase;
+		font-size: $fs-675;
+	}
+
+	.left-align,
+	.right-align {
+		font-family: $ff-secondary;
+		display: block;
+	}
+
+	.right-align {
+		text-align: right;
+		padding-right: 10px;
+		font-weight: normal;
+	}
+
+	.left-align {
+		text-align: left;
+		padding-left: 10px;
+		font-weight: normal;
+	}
+}

@@ -1,0 +1,21 @@
+.map {
+	height: 650px;
+	width: 65%;
+	margin-left: 5%;
+}
+
+.map-page {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.legend-container {
+	width: 25%;
+}
+
+.outer-map-page {
+	.btn {
+			color: $clr-black;
+		}
+}
