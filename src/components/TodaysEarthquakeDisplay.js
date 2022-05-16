@@ -3,7 +3,7 @@ import TodaysTotalHeroDisplay from "./TodaysTotalHeroDisplay";
 const TodaysEarthquakeDisplay = ({heroesSummary}) => {
     return(
         <div className="todays-display">
-            <h3>Incidents Within 24-Hours</h3>
+            <h2>Incidents Within 24-Hours</h2>
             <ul>
                 {
                     heroesSummary.map(hero => {

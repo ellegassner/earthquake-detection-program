@@ -9,6 +9,9 @@ import { getDatabase, ref, set, get } from "firebase/database";
 //modules
 import { useEffect, useState } from "react";
 import axios from "axios";
+// Font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 const MapPage = ({}) => {
 	const [earthquakesData, setEarthquakesData] = useState([]);
@@ -57,19 +60,11 @@ const MapPage = ({}) => {
 					throw new Error();
 				}
 			})
-
-			// Error 2: USGS API Call fails
-			// When this happens, alert the user with the error message
-			// It tells the user, what part of the app failed
-			// IT tells the user, what to do next (hard-refresh: CTRL/CMD + SHIFT + R)
-
-			// Error 3: API response array item limit reached (20,000 response objects)
-			// When this happens, alert the user with the error message "Limit reached, data as far back as X"
-			// If the limit is reached, grab the item at the end of the response object array,
-			// target its time property, convert the time into a date, and then render that date
-			// to the page as X, for example: "Total earthquake incidents since X"
-
 			.catch((err) => {
+				// Error 2: USGS API Call fails
+				// When this happens, alert the user with the error message
+				// It tells the user, what part of the app failed
+				// IT tells the user, what to do next (hard-refresh: CTRL/CMD + SHIFT + R)
 				alert(
 					`USGS API call failed. Please hard refresh your browser with CTRL/CMD + SHIFT + R. Here is the error message : ${err.message}`
 				);
@@ -81,10 +76,11 @@ const MapPage = ({}) => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/incidents/${startDate}`);
 
-		// Error 4: Firebase "set" method fails
+		// Error 3: Firebase "set" method fails
 		// Wrap the "set" method in a try...catch code block
 		// If the try succeeds (i.e. sets the earthquake data at the dbRef), do nothing
 		// If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
+
 		try {
 			set(dbRef, earthquakesData);
 		} catch (error) {
@@ -98,7 +94,7 @@ const MapPage = ({}) => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/incidents/${startDate}`);
 
-		// Error 5: Firebase "get" method fails
+		// Error 4: Firebase "get" method fails
 		// Wrap the get method in a try...catch block
 		// If the try succeeds (i.e. sets the earthquake data at the dbRef), do nothing
 		// If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
@@ -129,14 +125,14 @@ const MapPage = ({}) => {
 
 		const teal = copyOfEarthQuakeData.filter((incident) => {
 			const incidentMag = incident.properties.mag;
-			if (incidentMag < 3) {
+			if (incidentMag < 3.5) {
 				return incidentMag;
 			}
 		});
 
 		const blue = copyOfEarthQuakeData.filter((incident) => {
 			const incidentMag = incident.properties.mag;
-			if (incidentMag >= 3 && incidentMag < 6) {
+			if (incidentMag >= 3.5 && incidentMag < 6) {
 				return incidentMag;
 			}
 		});
@@ -282,13 +278,25 @@ const MapPage = ({}) => {
 	}, [totalCount, todaysCount]);
 
 	return (
-		<div className="mapPage">
+		<div className="outer-map-page">
 			{isLoading ? (
 				<p>Loading... Please wait</p>
 			) : (
 				<div>
+					<div>
+						<nav>
+							<Link to="/"><FontAwesomeIcon icon={faHouse}/></Link>
+							<Link to="/questionspage" className="btn">Questions?</Link>
+						</nav>
+						<div className="mag-legend">
+							<h3>Magnitudes legend</h3>
+						</div>
+					</div>
 					<div className="map-page">
-						<Map earthquakesData={todaysEarthquakeData} />
+						<div>
+							<h1>Earthquakes (Past 24hrs)</h1>
+							<Map earthquakesData={todaysEarthquakeData} />
+						</div>
 						<div className="legend-container">
 							<TotalEarthquakeDisplay
 								heroesSummary={heroesSummary}
