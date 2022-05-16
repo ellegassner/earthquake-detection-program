@@ -18,7 +18,7 @@ const MapPage = ({}) => {
 	const [heroesSummary, setHeroesSummary] = useState([]);
 	const [firstIncidentDate, setFirstIncidentDate] = useState([]);
 
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const startDate = "2022-05-05"; //start tracking from project start date
 	let today = new Date();
@@ -235,23 +235,19 @@ const MapPage = ({}) => {
 			function sleep(ms) {
 				return new Promise((resolve) => setTimeout(resolve, ms));
 			}
-
-			setIsLoading(true);
-
 			const promise1 = await loadDataToFirebase(earthquakesData);
 			const promise2 = await sleep(1500);
 
 			Promise.all([promise1, promise2]).then(async () => {
+				// Error 1: API loading indicator
+				// When page loads, isLoading state value = true
+				// Once the functions above are done running (3 promises), toggle isLoading state = false
+				// When this happens, conditionally render "loading" modal/element
 				await getDataFromFirebase();
+				const allTotalCount = getTotals(earthquakesData);
+				setTotalCount(allTotalCount);
+				setIsLoading(false);
 			});
-			// Error 1: API loading indicator
-			// When page loads, isLoading state value = true
-			// Once the functions above are done running (3 promises), toggle isLoading state = false
-			// When this happens, conditionally render "loading" modal/element
-
-			const allTotalCount = getTotals(earthquakesData);
-			setTotalCount(allTotalCount);
-			setIsLoading(false);
 		};
 		fetchData();
 	}, [earthquakesData]);
