@@ -179,6 +179,11 @@ const MapPage = ({}) => {
 					src: require("../assets/teal-shield.png"),
 					alt: "A teal shield.",
 				},
+                icon:{
+                    src:require("../assets/geo-teacher-headshot-transparent.png"),
+                    alt: "headshot of geo teacher"
+                },
+                color:"teal"
 			},
 			{
 				name: "rich moral",
@@ -193,6 +198,11 @@ const MapPage = ({}) => {
 					src: require("../assets/blue-shield.png"),
 					alt: "A blue shield.",
 				},
+                icon:{
+                    src:require("../assets/rich-moral-headshot-transparent.png"),
+                    alt: "headshot of rich moral"
+                },
+                color:"blue",
 			},
 			{
 				name: "stronggoode",
@@ -207,6 +217,11 @@ const MapPage = ({}) => {
 					src: require("../assets/purple-shield.png"),
 					alt: "A purple shield.",
 				},
+                icon:{
+                    src:require("../assets/stronggoode-headshot-transparent.png"),
+                    alt: "headshot of stronggoode"
+                },
+                color:"purple"
 			},
 			{
 				name: "all",
@@ -221,6 +236,11 @@ const MapPage = ({}) => {
 					src: require("../assets/three-color-square.png"),
 					alt: "Teal, Blue and Purple stripes.",
 				},
+                icon:{
+                    src:require("../assets/three-shields-transparent.png"),
+                    alt: "Three shields, a teal one, a blue one and a purple one."
+                },
+                color:"dark-purple"
 			},
 		];
 		setHeroesSummary(summary);

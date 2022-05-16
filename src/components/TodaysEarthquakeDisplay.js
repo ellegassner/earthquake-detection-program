@@ -12,6 +12,7 @@ const TodaysEarthquakeDisplay = ({heroesSummary}) => {
                                 key={hero.name}
                                 hero={hero.name}
                                 total={hero.incidentsOver24Hrs}
+                                color={hero.color}
                             />
                         );
                     })

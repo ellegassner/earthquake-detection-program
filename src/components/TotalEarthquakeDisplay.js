@@ -17,6 +17,8 @@ const TotalEarthquakeDisplay = ({heroesSummary, firstIncidentDate}) => {
                                 bio={hero.bio}
                                 fullImage={hero.fullImage}
                                 shieldImage={hero.shieldImage}
+                                icon={hero.icon}
+                                color={hero.color}
                             />
                         );
                     })
