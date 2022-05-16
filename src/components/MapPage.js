@@ -239,7 +239,7 @@ const MapPage = ({}) => {
 			setIsLoading(true);
 
 			const promise1 = await loadDataToFirebase(earthquakesData);
-			const promise2 = await sleep(1000);
+			const promise2 = await sleep(1500);
 
 			Promise.all([promise1, promise2]).then(async () => {
 				await getDataFromFirebase();
