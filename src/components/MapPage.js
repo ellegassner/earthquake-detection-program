@@ -1,287 +1,292 @@
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link } from "react-router-dom";
 import Map from "./Map";
 import TotalEarthquakeDisplay from "./TotalEarthquakeDisplay";
 import TodaysEarthquakeDisplay from "./TodaysEarthquakeDisplay";
 
 // Firebase Config
 import firebase from "../firebase";
-import {
-    getDatabase,
-    ref,
-    set,
-    get,
-} from "firebase/database";
+import { getDatabase, ref, set, get } from "firebase/database";
 //modules
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 const MapPage = ({}) => {
-    const [earthquakesData, setEarthquakesData] = useState([]);
-    const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
-    const [todaysCount, setTodaysCount] = useState([]);
-    const [totalCount, setTotalCount] = useState([]);
-    const [heroesSummary, setHeroesSummary] = useState([]);
-    const [firstIncidentDate, setFirstIncidentDate] = useState([]);
+	const [earthquakesData, setEarthquakesData] = useState([]);
+	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
+	const [todaysCount, setTodaysCount] = useState([]);
+	const [totalCount, setTotalCount] = useState([]);
+	const [heroesSummary, setHeroesSummary] = useState([]);
+	const [firstIncidentDate, setFirstIncidentDate] = useState([]);
 
-    const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-    const startDate = "2022-05-05"; //start tracking from project start date
-    let today = new Date();
-    let yesterday = new Date(today.getTime() - 86400000);
-    let convertedYesterday = yesterday.getTime();
+	const startDate = "2022-05-05"; //start tracking from project start date
+	let today = new Date();
+	let yesterday = new Date(today.getTime() - 86400000);
+	let convertedYesterday = yesterday.getTime();
 
-    //function to get earthquake data from USGS API.
-    //startTime argument passed to the function, limits data to events on or after the specified start time
-    const getEqDataFromApi = (startTime) => {
-        axios({
-            url: "https://earthquake.usgs.gov/fdsnws/event/1/query",
-            method: "GET",
-            dataResponse: "json",
-            params: {
-                format: "geojson",
-                starttime: startTime,
-                eventtype: "earthquake",
-                minmagnitude: 0,
-                orderby: "time",
-                limit: 20000,
-            },
-        })
-            .then((response) => {
-                if (response.status === 200) {
-                    const listOfEarthquakes = response.data.features;
-                    setEarthquakesData(listOfEarthquakes);
+	//function to get earthquake data from USGS API.
+	//startTime argument passed to the function, limits data to events on or after the specified start time
+	const getEqDataFromApi = (startTime) => {
+		axios({
+			url: "https://earthquake.usgs.gov/fdsnws/event/1/query",
+			method: "GET",
+			dataResponse: "json",
+			params: {
+				format: "geojson",
+				starttime: startTime,
+				eventtype: "earthquake",
+				minmagnitude: 0,
+				orderby: "time",
+				limit: 20000,
+			},
+		})
+			.then((response) => {
+				if (response.status === 200) {
+					const listOfEarthquakes = response.data.features;
+					setEarthquakesData(listOfEarthquakes);
 
-                    const firstDate = new Date(listOfEarthquakes[listOfEarthquakes.length - 1].properties.time);
-                    const displayDate = firstDate.toDateString();
-                    setFirstIncidentDate(displayDate);
+					const firstDate = new Date(
+						listOfEarthquakes[
+							listOfEarthquakes.length - 1
+						].properties.time
+					);
+					const displayDate = firstDate.toDateString();
+					setFirstIncidentDate(displayDate);
+				} else {
+					throw new Error();
+				}
+			})
 
-                } else {
-                    throw new Error();
-                }
+			// Error 2: USGS API Call fails
+			// When this happens, alert the user with the error message
+			// It tells the user, what part of the app failed
+			// IT tells the user, what to do next (hard-refresh: CTRL/CMD + SHIFT + R)
 
-            })
+			// Error 3: API response array item limit reached (20,000 response objects)
+			// When this happens, alert the user with the error message "Limit reached, data as far back as X"
+			// If the limit is reached, grab the item at the end of the response object array,
+			// target its time property, convert the time into a date, and then render that date
+			// to the page as X, for example: "Total earthquake incidents since X"
 
-            // Error 2: USGS API Call fails
-            // When this happens, alert the user with the error message
-            // It tells the user, what part of the app failed
-            // IT tells the user, what to do next (hard-refresh: CTRL/CMD + SHIFT + R)
+			.catch((err) => {
+				alert(
+					`USGS API call failed. Please hard refresh your browser with CTRL/CMD + SHIFT + R. Here is the error message : ${err.message}`
+				);
+			});
+	};
 
-            // Error 3: API response array item limit reached (20,000 response objects)
-            // When this happens, alert the user with the error message "Limit reached, data as far back as X"
-            // If the limit is reached, grab the item at the end of the response object array,
-            // target its time property, convert the time into a date, and then render that date
-            // to the page as X, for example: "Total earthquake incidents since X"
+	// Firebase Database
+	const loadDataToFirebase = async (earthquakesData) => {
+		const database = getDatabase(firebase);
+		const dbRef = ref(database, `/incidents/${startDate}`);
 
-            .catch((err) => {
-                alert(`USGS API call failed. Please hard refresh your browser with CTRL/CMD + SHIFT + R. Here is the error message : ${err.message}`);
-            });
-    };
+		// Error 4: Firebase "set" method fails
+		// Wrap the "set" method in a try...catch code block
+		// If the try succeeds (i.e. sets the earthquake data at the dbRef), do nothing
+		// If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
+		try {
+			set(dbRef, earthquakesData);
+		} catch (error) {
+			alert(
+				"Firebase data has failed to load. Please refresh your browser."
+			);
+		}
+	};
 
-    // Firebase Database
-    const loadDataToFirebase = async (earthquakesData) => {
-        const database = getDatabase(firebase);
-        const dbRef = ref(database, `/incidents/${startDate}`);
+	const getDataFromFirebase = async () => {
+		const database = getDatabase(firebase);
+		const dbRef = ref(database, `/incidents/${startDate}`);
 
-        // Error 4: Firebase "set" method fails
-        // Wrap the "set" method in a try...catch code block
-        // If the try succeeds (i.e. sets the earthquake data at the dbRef), do nothing
-        // If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
-        try {
-            set(dbRef, earthquakesData);
-        } catch (error) {
-            alert("Firebase data has failed to load. Please refresh your browser.");
-        }
+		// Error 5: Firebase "get" method fails
+		// Wrap the get method in a try...catch block
+		// If the try succeeds (i.e. sets the earthquake data at the dbRef), do nothing
+		// If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
 
-    };
+		// Getting Data from Firebase
+		try {
+			get(dbRef).then((snapshot) => {
+				const firebaseData = snapshot.val();
+				const copyOfFirebaseData = [...firebaseData];
 
-    const getDataFromFirebase = async () => {
-        const database = getDatabase(firebase);
-        const dbRef = ref(database, `/incidents/${startDate}`);
+				// Filtering through the Data
+				const todaysData = copyOfFirebaseData.filter((incident) => {
+					let eventDate = incident.properties.time;
 
-        // Error 5: Firebase "get" method fails
-        // Wrap the get method in a try...catch block
-        // If the try succeeds (i.e. sets the earthquake data at the dbRef), do nothing
-        // If the try fails, capture the error, and alert the user indicating that the firebase "set" failed
+					return convertedYesterday <= eventDate;
+				});
+				setTodaysEarthquakeData(todaysData);
+			});
+		} catch (error) {
+			alert(
+				"Firebase data has failed to load. Please refresh your browser."
+			);
+		}
+	};
 
-        // Getting Data from Firebase
-        try {
-            get(dbRef).then((snapshot) => {
-                const firebaseData = snapshot.val();
-                const copyOfFirebaseData = [...firebaseData];
+	const getTotals = (earthquakesList) => {
+		const copyOfEarthQuakeData = [...earthquakesList];
 
-                // Filtering through the Data
-                const todaysData = copyOfFirebaseData.filter(
-                    (incident) => {
-                        let eventDate = incident.properties.time;
+		const teal = copyOfEarthQuakeData.filter((incident) => {
+			const incidentMag = incident.properties.mag;
+			if (incidentMag < 3) {
+				return incidentMag;
+			}
+		});
 
-                        return convertedYesterday <= eventDate;
-                    }
-                );
-                setTodaysEarthquakeData(todaysData);
-            });
-        } catch (error) {
-            alert("Firebase data has failed to load. Please refresh your browser.");
-        }
-    };
+		const blue = copyOfEarthQuakeData.filter((incident) => {
+			const incidentMag = incident.properties.mag;
+			if (incidentMag >= 3 && incidentMag < 6) {
+				return incidentMag;
+			}
+		});
 
-    const getTotals = (earthquakesList) => {
-        const copyOfEarthQuakeData = [...earthquakesList];
+		const purple = copyOfEarthQuakeData.filter((incident) => {
+			const incidentMag = incident.properties.mag;
+			if (incidentMag >= 6 && incidentMag < 7) {
+				return incidentMag;
+			}
+		});
 
-        const teal = copyOfEarthQuakeData.filter((incident) => {
-            const incidentMag = incident.properties.mag;
-            if (incidentMag < 3) {
-                return incidentMag;
-            }
-        });
+		const darkPurple = copyOfEarthQuakeData.filter((incident) => {
+			const incidentMag = incident.properties.mag;
+			if (incidentMag >= 7) {
+				return incidentMag;
+			}
+		});
 
-        const blue = copyOfEarthQuakeData.filter((incident) => {
-            const incidentMag = incident.properties.mag;
-            if (incidentMag >= 3 && incidentMag < 6) {
-                return incidentMag;
-            }
-        });
+		const heroTotals = {
+			geoTeacher: teal.length,
+			richMoral: blue.length,
+			strongGoode: purple.length,
+			allTeam: darkPurple.length,
+		};
+		return heroTotals;
+	};
 
-        const purple = copyOfEarthQuakeData.filter((incident) => {
-            const incidentMag = incident.properties.mag;
-            if (incidentMag >= 6 && incidentMag < 7) {
-                return incidentMag;
-            }
-        });
+	const getHeroesSummary = () => {
+		const summary = [
+			{
+				name: "general geology-teacher",
+				totalIncidents: totalCount.geoTeacher,
+				incidentsOver24Hrs: todaysCount.geoTeacher,
+				bio: "The geology teacher has been sent to educate the neighbourhood on earthquake tendencies and how to prepare for any larger event.",
+				fullImage: {
+					src: require("../assets/geo-teacher-transparent.png"),
+					alt: "A geo teacher flying through the air.",
+				},
+				shieldImage: {
+					src: require("../assets/teal-shield.png"),
+					alt: "A teal shield.",
+				},
+			},
+			{
+				name: "rich moral",
+				totalIncidents: totalCount.richMoral,
+				incidentsOver24Hrs: todaysCount.richMoral,
+				bio: "With their flashy technology, Rich Moral will be able to reassure the public with earthquakes that have a higher magnitude.",
+				fullImage: {
+					src: require("../assets/rich-moral-transparent.png"),
+					alt: "The superhero Rich Moral kneeling on the ground.",
+				},
+				shieldImage: {
+					src: require("../assets/blue-shield.png"),
+					alt: "A blue shield.",
+				},
+			},
+			{
+				name: "stronggoode",
+				totalIncidents: totalCount.strongGoode,
+				incidentsOver24Hrs: todaysCount.strongGoode,
+				bio: "With unnatural lifting abilities, StrongGood will be able to handle any crisis and will reassure the public there is nothing to fear.",
+				fullImage: {
+					src: require("../assets/stronggoode-transparent.png"),
+					alt: "The superhero, StrongGoode running fast.",
+				},
+				shieldImage: {
+					src: require("../assets/purple-shield.png"),
+					alt: "A purple shield.",
+				},
+			},
+			{
+				name: "all",
+				totalIncidents: totalCount.allTeam,
+				incidentsOver24Hrs: todaysCount.allTeam,
+				bio: "With the strongest earthquakes, we send our entire team of superheroes to ensure safety and peace of mind to the public.",
+				fullImage: {
+					src: require("../assets/three-shields-transparent.png"),
+					alt: "Three shields, a teal one, a blue one and a purple one.",
+				},
+				shieldImage: {
+					src: require("../assets/three-color-square.png"),
+					alt: "Teal, Blue and Purple stripes.",
+				},
+			},
+		];
+		setHeroesSummary(summary);
+	};
 
-        const darkPurple = copyOfEarthQuakeData.filter((incident) => {
-            const incidentMag = incident.properties.mag;
-            if (incidentMag >= 7) {
-                return incidentMag;
-            }
-        });
+	useEffect(() => {
+		getEqDataFromApi(startDate);
+	}, []);
 
-        const heroTotals = {
-            geoTeacher: teal.length,
-            richMoral: blue.length,
-            strongGoode: purple.length,
-            allTeam: darkPurple.length,
-        };
-        return heroTotals;
-    };
+	useEffect(() => {
+		const fetchData = async () => {
+			function sleep(ms) {
+				return new Promise((resolve) => setTimeout(resolve, ms));
+			}
 
-    const getHeroesSummary = () => {
-        const summary = [
-            {
-                name: "general geology-teacher",
-                totalIncidents: totalCount.geoTeacher,
-                incidentsOver24Hrs: todaysCount.geoTeacher,
-                bio: "The geology teacher has been sent to educate the neighbourhood on earthquake tendencies and how to prepare for any larger event.",
-                fullImage: {
-                    src: require("../assets/geo-teacher-transparent.png"),
-                    alt: "A geo teacher flying through the air."
-                },
-                shieldImage: {
-                    src: require("../assets/teal-shield.png"),
-                    alt: "A teal shield."
-                }
-            },
-            {
-                name: "rich moral",
-                totalIncidents: totalCount.richMoral,
-                incidentsOver24Hrs: todaysCount.richMoral,
-                bio: "With their flashy technology, Rich Moral will be able to reassure the public with earthquakes that have a higher magnitude.",
-                fullImage: {
-                    src: require("../assets/rich-moral-transparent.png"),
-                    alt: "The superhero Rich Moral kneeling on the ground."
-                },
-                shieldImage: {
-                    src: require("../assets/blue-shield.png"),
-                    alt: "A blue shield."
-                }
-            },
-            {
-                name: "stronggoode",
-                totalIncidents: totalCount.strongGoode,
-                incidentsOver24Hrs: todaysCount.strongGoode,
-                bio: "With unnatural lifting abilities, StrongGood will be able to handle any crisis and will reassure the public there is nothing to fear.",
-                fullImage: {
-                    src: require("../assets/stronggoode-transparent.png"),
-                    alt: "The superhero, StrongGoode running fast."
-                },
-                shieldImage: {
-                    src: require("../assets/purple-shield.png"),
-                    alt: "A purple shield."
-                }
-            },
-            {
-                name: "all",
-                totalIncidents: totalCount.allTeam,
-                incidentsOver24Hrs: todaysCount.allTeam,
-                bio: "With the strongest earthquakes, we send our entire team of superheroes to ensure safety and peace of mind to the public.",
-                fullImage: {
-                    src: require("../assets/three-shields-transparent.png"),
-                    alt: "Three shields, a teal one, a blue one and a purple one."
-                },
-                shieldImage: {
-                    src: require("../assets/three-color-square.png"),
-                    alt: "Teal, Blue and Purple stripes."
-                }
-            },
-        ];
-        setHeroesSummary(summary);
-    };
+			setIsLoading(true);
 
-    useEffect(() => {
-        getEqDataFromApi(startDate);
-    }, []);
+			const promise1 = await loadDataToFirebase(earthquakesData);
+			const promise2 = await sleep(1000);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            function sleep(ms) {
-                return new Promise((resolve) => setTimeout(resolve, ms));
-            }
+			Promise.all([promise1, promise2]).then(async () => {
+				await getDataFromFirebase();
+			});
+			// Error 1: API loading indicator
+			// When page loads, isLoading state value = true
+			// Once the functions above are done running (3 promises), toggle isLoading state = false
+			// When this happens, conditionally render "loading" modal/element
 
-            setIsLoading(true);
-            await loadDataToFirebase(earthquakesData);
-            await sleep(1000);
-            await getDataFromFirebase();
-            // Error 1: API loading indicator
-            // When page loads, isLoading state value = true
-            // Once the functions above are done running (3 promises), toggle isLoading state = false
-            // When this happens, conditionally render "loading" modal/element
+			const allTotalCount = getTotals(earthquakesData);
+			setTotalCount(allTotalCount);
+			setIsLoading(false);
+		};
+		fetchData();
+	}, [earthquakesData]);
 
-            const allTotalCount = getTotals(earthquakesData);
-            setTotalCount(allTotalCount);
-            setIsLoading(false);
-        };
-        fetchData();
-    }, [earthquakesData]);
+	useEffect(() => {
+		const todayTotalCount = getTotals(todaysEarthquakeData);
+		setTodaysCount(todayTotalCount);
+	}, [todaysEarthquakeData]);
 
-    useEffect(() => {
-        const todayTotalCount = getTotals(todaysEarthquakeData);
-        setTodaysCount(todayTotalCount);
-    }, [todaysEarthquakeData]);
+	useEffect(() => {
+		getHeroesSummary();
+	}, [totalCount, todaysCount]);
 
-    useEffect(() => {
-        getHeroesSummary();
-    }, [totalCount, todaysCount]);
-
-    return (
-        <div className='mapPage'>
-            {
-                isLoading ? (
-                    <p>Loading... Please wait</p>
-                ) : (
-                    <div>
-                        <div className="map-page">
-                            <Map earthquakesData={todaysEarthquakeData} />
-                            <div className="legend-container">
-                                <TotalEarthquakeDisplay heroesSummary={heroesSummary} firstIncidentDate={firstIncidentDate} />
-                                <TodaysEarthquakeDisplay heroesSummary={heroesSummary} />
-                            </div>
-                            
-                        </div>
-                    </div>
-                )
-            }
-        </div>
-    )
-}
+	return (
+		<div className="mapPage">
+			{isLoading ? (
+				<p>Loading... Please wait</p>
+			) : (
+				<div>
+					<div className="map-page">
+						<Map earthquakesData={todaysEarthquakeData} />
+						<div className="legend-container">
+							<TotalEarthquakeDisplay
+								heroesSummary={heroesSummary}
+								firstIncidentDate={firstIncidentDate}
+							/>
+							<TodaysEarthquakeDisplay
+								heroesSummary={heroesSummary}
+							/>
+						</div>
+					</div>
+				</div>
+			)}
+		</div>
+	);
+};
 
 export default MapPage;
