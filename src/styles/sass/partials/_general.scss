@@ -30,4 +30,10 @@ img {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
+
+    &:hover,
+    &:focus {
+        color: $clr-teal;
+        border: 2px solid $clr-teal;
+    }
 }
