@@ -3,6 +3,10 @@
 @import "./partials/variables";
 @import "./partials/typography";
 @import "./partials/general";
+@import "./partials/basestyles.scss";
 // component partials
-@import "./partials/components/Map";
+@import "./partials/components/MapPage";
 @import "./partials/components/HeroTotalDisplay";
+@import "./partials/components/TodaysTotalHeroDisplay.scss";
+@import "./partials/components/HomePage.scss";
+@import "./partials/components/QuestionsPage.scss";

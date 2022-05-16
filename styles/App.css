@@ -326,11 +326,25 @@ a {
 }
 
 .map {
-  height: 500px;
-  width: 80%;
-  max-width: 1000px;
-  margin: 0 auto;
-  border: 1px solid red;
+  height: 650px;
+  width: 65%;
+  margin-left: 5%;
+}
+
+.map-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.legend-container {
+  width: 25%;
 }
 
 .hero-total {
@@ -354,6 +368,29 @@ a {
   width: 15px;
 }
 
+.total-display h2 {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px;
+  font-weight: normal;
+}
+.total-display ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.total-display p {
+  width: 40px;
+}
+
 .legendBottom p {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -373,17 +410,118 @@ a {
 
 .today-total {
   display: inline-block;
-  margin: 15px;
+  margin: 10px;
 }
 
-.homePage {
+.todays-display h3 {
   background-color: #000000;
-  height: 100vh;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px;
+  font-weight: normal;
 }
-.homePage h1 {
+.todays-display ul {
+  text-align: center;
+}
+
+.home-page {
+  background-color: #000000;
+  height: 920px;
+  text-align: center;
+}
+.home-page .wrapper {
+  background-color: #000000;
+}
+.home-page img {
+  width: 75%;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: -90px;
+}
+.home-page h1 {
+  padding-top: 200px;
   color: #ffffff;
   margin: 0;
 }
-.homePage span {
+.home-page .title {
   display: block;
+  text-transform: uppercase;
+  font-size: 49px;
+}
+.home-page .left-align,
+.home-page .right-align {
+  font-family: "Montserrat", sans-serif;
+  display: block;
+}
+.home-page .right-align {
+  text-align: right;
+  padding-right: 10px;
+  font-weight: normal;
+}
+.home-page .left-align {
+  text-align: left;
+  padding-left: 10px;
+  font-weight: normal;
+}
+.home-page a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+  color: white;
+  text-transform: uppercase;
+  border: 2px solid #ffffff;
+  width: 25%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.questions-page {
+  background-color: #000000;
+  height: 920px;
+  text-align: center;
+  color: #ffffff;
+}
+.questions-page img {
+  width: 30%;
+  margin: 0 auto;
+}
+.questions-page h2 {
+  font-size: 40px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 50px;
+}
+.questions-page h2:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: 2px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+}
+.questions-page p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  padding: 33px 0;
+  line-height: 32px;
+}
+.questions-page span {
+  display: block;
+}
+.questions-page a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  display: block;
+  color: white;
+  text-transform: uppercase;
+  border: 2px solid #ffffff;
+  width: 25%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 50px;
 }

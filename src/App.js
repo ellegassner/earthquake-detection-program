@@ -18,9 +18,8 @@ function App() {
 			<Routes>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/questionspage' element={<QuestionsPage />} />
-				<Route path='/mappage' element={<MapPage />}>
-					<Route path='/mappage/heroprofile' element={<HeroProfile />} />
-				</Route>
+				<Route path='/mappage' element={<MapPage />} />
+				<Route path='/heroprofile/' element={<HeroProfile />} />
 			</Routes>
 		</div>
 	);

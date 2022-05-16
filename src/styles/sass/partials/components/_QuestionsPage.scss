@@ -1,0 +1,55 @@
+.questions-page {
+	background-color: $clr-black;
+	height: 1200px;
+	text-align: center;
+	color: $clr-white;
+
+	img {
+		width: 30%;
+		margin: 0 auto;
+	}
+
+	h2 {
+		font-size: $fs-650;
+		text-transform: uppercase;
+		position: relative;
+		padding-bottom: 50px;
+
+		&:after {
+			content: "";
+			display: block;
+			margin: 0 auto;
+			width: 80%;
+			height: 2px;
+			background-color: $clr-white;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 10px;
+		}
+	}
+
+	p {
+		font-family: $ff-secondary;
+		font-size: $fs-500;
+		padding: 33px 0;
+		line-height: $lh-100;
+	}
+
+	span {
+		display: block;
+	}
+
+	a {
+		font-family: $ff-secondary;
+		font-weight: bold;
+		display: block;
+		color: white;
+		text-transform: uppercase;
+		border: 2px solid $clr-white;
+		width: 300px;
+		margin: 0 auto;
+		padding: 20px;
+		margin-top: 50px;
+	}
+}
