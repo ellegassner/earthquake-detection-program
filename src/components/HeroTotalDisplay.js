@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const HeroTotalDisplay = ({hero, total, bio, fullImage, shieldImage, icon, color}) => {
-
+    // Creating a state property to pass to HeroProfile component
     const heroData = {
         hero: hero,
         bio: bio,

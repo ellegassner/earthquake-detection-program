@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 
 const HeroProfile = () => {
+	// useLocation hook to access the location of state property from HeroTotalDisplay component
 	let location = useLocation();
 	const data = location.state;
+	// Calculated accrued vacation days
 	const vacationDays = Math.floor(data.total / 30);
 
 	return (

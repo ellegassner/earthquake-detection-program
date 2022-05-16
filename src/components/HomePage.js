@@ -1,4 +1,4 @@
-import { Route, Routes, Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HomePageImg from "../assets/homepage-three-shields.png"
 
 
@@ -14,7 +14,7 @@ const HomePage = () => {
                 <div>
                     <img src={HomePageImg} alt="Home page three shields" />
                 </div>
-                <Link to='/questionspage'>Learn what we do</Link>
+                <Link to='/questionspage' className='btn'>Learn what we do</Link>
             </div>
         </div>
     )

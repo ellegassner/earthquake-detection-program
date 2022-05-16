@@ -1,10 +1,18 @@
-import { Route, Routes, Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import QuestionsPageImg from "../assets/homepage-three-shields.png"
+// Font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 const QuestionsPage = () => {
     return (
         <div className="questions-page">
             <div className="wrapper">
+                <nav>
+                    <Link to="/">
+                        <FontAwesomeIcon icon={faHouse} />
+                    </Link>
+                </nav>
                 <img src={QuestionsPageImg} alt="Questions page three shields" />
                 <h2>Extraordinary collective of superheroes</h2>
                 <p>When an incident, such as an earthquake, occurs, we are the superheroes that handle the event! The magnitude of the earthquake is what determines which superhero is sent.</p>
@@ -14,7 +22,7 @@ const QuestionsPage = () => {
                     <span>Step 2: View earthquakes on the map that have happened within 24 hours</span>
                     <span>Step 3: To see total amount of incidents attended to by each superhero, click on their portrait</span>
                 </p>
-                <Link to='/mappage'>Find Earthquakes</Link>
+                <Link to='/mappage' className='btn'>Find Earthquakes</Link>
             </div>
         </div>
     )

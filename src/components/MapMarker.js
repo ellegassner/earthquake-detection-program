@@ -5,13 +5,6 @@ import { useEffect, useState } from "react";
 // import marker icon (this is a fix to ensure the marker renders properly)
 import * as L from "leaflet";
 
-// delete L.Icon.Default.prototype._getIconUrl;
-// L.Icon.Default.mergeOptions({
-// 	iconRetinaUrl: require(`../assets/blue-marker.png`),
-// 	iconUrl: require(`../assets/blue-marker.png`),
-// 	shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
-// });
-
 const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 	//  Create the Icon
 	const LeafIcon = L.Icon.extend({
@@ -21,10 +14,6 @@ const MapMarker = ({ lat, lon, magnitude, place, hero }) => {
 			popupAnchor: [0, -5], // point from which the popup should open relative to the iconAnchor
 		},
 	});
-
-	// Error 7: Markers fail to load
-	// When the map is rendered, the markers don't display correctly
-	// Add some alt text for each marker, to handle this edge case
 
 	// create colored icons
 	const tealIcon = new LeafIcon({

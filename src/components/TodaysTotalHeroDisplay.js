@@ -1,4 +1,4 @@
-const TodaysTotalHeroDisplay = ({hero, total, color}) => {
+const TodaysTotalHeroDisplay = ({ total, color}) => {
 
     return(
         <li className="today-total">
