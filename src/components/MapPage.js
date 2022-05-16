@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Map from "./Map";
 import TotalEarthquakeDisplay from "./TotalEarthquakeDisplay";
 import TodaysEarthquakeDisplay from "./TodaysEarthquakeDisplay";

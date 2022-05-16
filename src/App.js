@@ -2,7 +2,7 @@
 import "./styles/sass/App.scss";
 
 //modules
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 // components
 import HomePage from "./components/HomePage";

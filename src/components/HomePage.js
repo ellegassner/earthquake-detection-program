@@ -1,4 +1,4 @@
-import { Route, Routes, Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HomePageImg from "../assets/homepage-three-shields.png"
 
 
