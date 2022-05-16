@@ -171,25 +171,57 @@ const MapPage = ({}) => {
                 name: "general geology-teacher",
                 totalIncidents: totalCount.geoTeacher,
                 incidentsOver24Hrs: todaysCount.geoTeacher,
-                bio: "The geology teacher has been sent to educate the neighbourhood on earthquake tendencies and how to prepare for any larger event."
+                bio: "The geology teacher has been sent to educate the neighbourhood on earthquake tendencies and how to prepare for any larger event.",
+                fullImage: {
+                    src: require("../assets/geo-teacher-transparent.png"),
+                    alt: "A geo teacher flying through the air."
+                },
+                shieldImage: {
+                    src: require("../assets/teal-shield.png"),
+                    alt: "A teal shield."
+                }
             },
             {
                 name: "rich moral",
                 totalIncidents: totalCount.richMoral,
                 incidentsOver24Hrs: todaysCount.richMoral,
-                bio: "With their flashy technology, Rich Moral will be able to reassure the public with earthquakes that have a higher magnitude."
+                bio: "With their flashy technology, Rich Moral will be able to reassure the public with earthquakes that have a higher magnitude.",
+                fullImage: {
+                    src: require("../assets/rich-moral-transparent.png"),
+                    alt: "The superhero Rich Moral kneeling on the ground."
+                },
+                shieldImage: {
+                    src: require("../assets/blue-shield.png"),
+                    alt: "A blue shield."
+                }
             },
             {
                 name: "stronggoode",
                 totalIncidents: totalCount.strongGoode,
                 incidentsOver24Hrs: todaysCount.strongGoode,
-                bio: "With unnatural lifting abilities, StrongGood will be able to handle any crisis and will reassure the public there is nothing to fear."
+                bio: "With unnatural lifting abilities, StrongGood will be able to handle any crisis and will reassure the public there is nothing to fear.",
+                fullImage: {
+                    src: require("../assets/stronggoode-transparent.png"),
+                    alt: "The superhero, StrongGoode running fast."
+                },
+                shieldImage: {
+                    src: require("../assets/purple-shield.png"),
+                    alt: "A purple shield."
+                }
             },
             {
                 name: "all",
                 totalIncidents: totalCount.allTeam,
                 incidentsOver24Hrs: todaysCount.allTeam,
-                bio: "With the strongest earthquakes, we send our entire team of superheroes to ensure safety and peace of mind to the public."
+                bio: "With the strongest earthquakes, we send our entire team of superheroes to ensure safety and peace of mind to the public.",
+                fullImage: {
+                    src: require("../assets/three-shields-transparent.png"),
+                    alt: "Three shields, a teal one, a blue one and a purple one."
+                },
+                shieldImage: {
+                    src: require("../assets/three-color-square.png"),
+                    alt: "Teal, Blue and Purple stripes."
+                }
             },
         ];
         setHeroesSummary(summary);

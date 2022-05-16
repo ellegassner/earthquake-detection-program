@@ -5,7 +5,10 @@ const HeroProfile = () => {
     let location = useLocation();
     const data = location.state;
 
-    console.log("location", location)
+    const vacationDays = Math.floor(data.total / 30);
+
+    console.log(data.fullImage);
+
 
     return (   
         <div className="hero-profile-page">
@@ -15,7 +18,14 @@ const HeroProfile = () => {
                 <h1>{data.hero}</h1>
                 <h3>Successfully Deployed</h3>
                 <p>{data.bio}</p>
-                <p>{data.total}</p>
+                <p>Total earthquakes attended: {data.total}</p>
+                <p>Vacation days accrued: {vacationDays}</p>
+                <div>
+                    <img src={data.fullImage.src} alt="" />
+                </div>
+                <div>
+                    <img src={data.shieldImage.src} alt="" />
+                </div>
             </div>
         </div>
     )

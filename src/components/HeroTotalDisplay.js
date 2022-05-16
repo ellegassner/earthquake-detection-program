@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const HeroTotalDisplay = ({hero, total, bio}) => {
+const HeroTotalDisplay = ({hero, total, bio, fullImage, shieldImage}) => {
 
     const getHeroColour = (hero) => {
         let color;
@@ -36,6 +36,8 @@ const HeroTotalDisplay = ({hero, total, bio}) => {
         hero: hero,
         bio: bio,
         total: total,
+        fullImage: fullImage,
+        shieldImage: shieldImage
     };
 
 
