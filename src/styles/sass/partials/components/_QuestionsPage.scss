@@ -36,11 +36,6 @@
 		line-height: $lh-100;
 	}
 
-	span {
-		display: block;
-		padding: 10px 0;
-	}
-
 	nav {
 		text-align: left;
 		padding-top: 20px;
@@ -53,6 +48,35 @@
 			&:focus {
 				color: $clr-teal;
 			}
+		}
+	}
+
+	h3 {
+		font-size: $fs-550;
+		position: relative;
+
+		&:after {
+			content: "";
+			display: block;
+			margin: 0 auto;
+			width: 300px;
+			height: 1px;
+			background-color: $clr-white;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: -10px;
+		}
+	}
+
+	ul {
+		font-family: $ff-secondary;
+		padding: 25px 0;
+
+		li {
+			font-family: $ff-secondary;
+			font-size: $fs-500;
+			line-height: $lh-200;
 		}
 	}
 }

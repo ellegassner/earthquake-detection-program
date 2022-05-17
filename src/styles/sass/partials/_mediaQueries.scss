@@ -2,7 +2,11 @@
 @media (max-width: 960px) {
     // Home page
     .home-page {
+        height: 100vh;
+
         h1 {
+            padding-top: 125px;
+
             .title {
                 font-size: $fs-550;
             }
@@ -20,6 +24,11 @@
         .right-align {
             font-size: $fs-500;
         }
+
+        footer {
+            margin-top: 30px;
+            font-size: $fs-200;
+        }
     }
 
     // Questions page
@@ -29,7 +38,8 @@
                 font-size: $fs-550;
             }
 
-            p {
+            p,
+            li {
                 font-size: $fs-400;
             }
         }
@@ -112,7 +122,8 @@
     // Questions page
     .questions-page {
         div {
-            p {
+            p,
+            li {
                 font-size: $fs-300;
             }
         }
@@ -258,6 +269,10 @@
         .today-total {
             margin: 20px;
         }
+    }
+
+    .mag-legend {
+        padding-top: 25px;
     }
 }
 

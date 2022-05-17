@@ -1,9 +1,7 @@
 @import "./partials/setup";
-@import "./partials/mixins";
 @import "./partials/variables";
 @import "./partials/typography";
-@import "./partials/general";
-@import "./partials/basestyles.scss";
+@import "./partials/baseStyles.scss";
 
 // component partials
 @import "./partials/components/MapPage";

@@ -282,9 +282,9 @@ const MapPage = ({}) => {
 	}, [totalCount, todaysCount]);
 
 	return (
-		<div className="outer-map-page">
+		<div className="outer-map-page wrapper">
 			{isLoading ? (
-				<p>Loading... Please wait</p>
+				<h1>Loading... Please wait</h1>
 			) : (
 				<div>
 					<div className="home-icon-map-page">
@@ -295,7 +295,10 @@ const MapPage = ({}) => {
 					<div className="map-page">
 						<div className="map-container">
 							<div className="map-title-legend">
-								<h1>Earthquakes (Past 24hrs)</h1>
+								<div>
+									<h1>Earthquakes (Past 24hrs)</h1>
+									<p>Click on the map markers to learn more about each incident.</p>
+								</div>
 								<MagLegend />
 							</div>
 							<Map earthquakesData={todaysEarthquakeData} />
@@ -311,6 +314,13 @@ const MapPage = ({}) => {
 							/>
 						</div>
 					</div>
+					<footer>Created by
+						<a href="https://www.nicolebeckles.dev/" target="_blank" rel="noopener noreferrer"> Nicole Beckles | </a>
+						<a href="https://www.royalbai.com" target="_blank" rel="noopener noreferrer">Royal Bai | </a>
+						<a href="https://www.gabrielwright.ca" target="_blank" rel="noopener noreferrer">Gabriel Wright | </a>
+						<a href="https://www.ellegassner.ca" target="_blank" rel="noopener noreferrer">Elle Gassner </a> at
+						<a href="https://junocollege.com/" target="_blank" rel="noopener noreferrer"> Juno College of Technology</a>
+					</footer>
 				</div>
 			)}
 		</div>
