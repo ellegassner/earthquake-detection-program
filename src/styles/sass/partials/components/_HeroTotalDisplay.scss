@@ -23,6 +23,12 @@
         text-align: center;
         padding: 30px;
         font-weight: normal;
+
+        span {
+            display: block;
+            font-size: $fs-400;
+            padding-top: 5px;
+        }
     }
 
     ul {
@@ -33,7 +39,7 @@
         li {
             &:hover,
             &:focus {
-                border: 2px dotted $clr-purple;
+                background-color: $clr-light-grey;
             }
         }
 

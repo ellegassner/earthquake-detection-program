@@ -1,9 +1,10 @@
 .outer-map-page {
+	position: relative;
 	.home-icon-map-page {
 		width: 65%;
 		margin-left: 2%;
 		padding-top: 15px;
-		position: relative;
+		
 	}
 
 	nav {
@@ -20,6 +21,17 @@
 			}
 		}
 	}
+
+	.map-page {
+		h1 {
+			margin-bottom: 0px;
+		}
+	}
+
+	footer {
+		color: $clr-black;
+		text-align: center;
+	}
 }
 
 .mag-legend {
@@ -35,28 +47,10 @@
 			text-align: center;
 		}
 
-		.teal-legend-colour {
-			background-color: $clr-teal;
-			color: $clr-teal;
+		li {
+			display: inline-block;
 			width: 75px;
-		}
-
-		.blue-legend-colour {
-			background-color: $clr-blue;
-			color: $clr-blue;
-			width: 75px;
-		}
-
-		.purple-legend-colour {
-			background-color: $clr-purple;
-			color: $clr-purple;
-			width: 75px;
-		}
-
-		.dark-purple-legend-colour {
-			background-color: $clr-dark-purple;
-			color: $clr-dark-purple;
-			width: 75px;
+			height: 23px;
 		}
 
 		span {

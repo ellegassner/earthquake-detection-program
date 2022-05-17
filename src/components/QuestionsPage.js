@@ -15,14 +15,22 @@ const QuestionsPage = () => {
                 </nav>
                 <img src={QuestionsPageImg} alt="Questions page three shields" />
                 <h2>Extraordinary collective of superheroes</h2>
-                <p>When an incident, such as an earthquake, occurs, we are the superheroes that handle the event! The magnitude of the earthquake is what determines which superhero is sent.</p>
-                <p>This app allows us to monitor the earthquake & to deploy the right superhero for the job. Based on how many incidents the superhero has attended, they will accrue vacation days!</p>
-                <p>
-                    <span>Step 1: Click on "Find Earthquakes"</span>
-                    <span>Step 2: View earthquakes on the map that have happened within 24 hours</span>
-                    <span>Step 3: To see total amount of incidents attended to by each superhero, click on their portrait</span>
+                <p>When an earthquake occurs, we are the superheroes that answer the call! Depending on the magnitude of the earthquake, we select the hero with the right expertise for the job.
                 </p>
+                <p>This app allows us to keep track of each hero's workload, log each incident that they attend, and display their vacation days accrued in their hero profiles.</p>
+                <h3>How to use this App</h3>
+                <ul>
+                    <li>Step 1: Click on "Find Earthquakes" to view incidents that have happened within 24 hours</li>
+                    <li>Step 2: To see total amount of incidents attended to by each superhero, click on their portrait</li>
+                </ul>
                 <Link to='/mappage' className='btn'>Find Earthquakes</Link>
+                <footer>Created by
+                    <a href="https://www.nicolebeckles.dev/" target="_blank" rel="noopener noreferrer"> Nicole Beckles | </a>
+                    <a href="https://www.royalbai.com" target="_blank" rel="noopener noreferrer">Royal Bai | </a>
+                    <a href="https://www.gabrielwright.ca" target="_blank" rel="noopener noreferrer">Gabriel Wright | </a>
+                    <a href="https://www.ellegassner.ca" target="_blank" rel="noopener noreferrer">Elle Gassner </a> at
+                    <a href="https://junocollege.com/" target="_blank" rel="noopener noreferrer"> Juno College of Technology</a>
+                </footer>
             </div>
         </div>
     )
