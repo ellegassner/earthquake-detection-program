@@ -1,0 +1,73 @@
+.hero-profile-page{
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;  //TODO:update
+
+    h1{
+        
+            font-size: $fs-600;
+                text-transform: uppercase;
+                position: relative;
+                padding-bottom: 50px;
+            
+                &:after {
+                    content: "";
+                    display: block;
+                    margin: 0 auto;
+                    width: 90%;
+                    height: 2px;
+                    background-color: $clr-white;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 10px;
+                }
+    }
+}
+.hero-profile-page .wrapper{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: $clr-white;
+
+    max-width:900px;
+    display: grid;
+    grid-template-rows: 40px 250px 250px;
+    grid-template-columns: 0.75fr 1fr 1fr;
+    grid-template-areas: "fullImg close close"
+                         "fullImg bio bio"
+                         "shield bio bio";
+    
+    .close-btn {
+        grid-area: close;
+        display:flex;
+        justify-content: right;
+        align-items: center;
+    }
+
+    .profile-full-img{
+        grid-area: fullImg;
+    }
+
+    .profile-shield{
+        grid-area: shield;
+    }
+
+    .profile-bio{
+        grid-area: bio;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .close-btn,
+    .profile-bio{
+        background-color: $clr-black;
+        color: $clr-white;
+        padding:0 10px;
+    }
+
+
+}

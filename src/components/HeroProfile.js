@@ -1,4 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
 
 const HeroProfile = () => {
 	// useLocation hook to access the location of state property from HeroTotalDisplay component
@@ -10,19 +13,21 @@ const HeroProfile = () => {
 	return (
 		<div className="hero-profile-page">
 			<div className="wrapper">
-				<Link to="/mappage">X</Link>
-
-				<h1>{data.hero}</h1>
-				<h3>Successfully Deployed</h3>
-				<p>{data.bio}</p>
-				<p>Total earthquakes attended: {data.total}</p>
-				<p>Vacation days accrued: {vacationDays}</p>
-				<div>
+				<Link to="/mappage" className="close-btn"><FontAwesomeIcon icon={faXmark}/></Link>
+				<div class="profile-full-img">
 					<img src={data.fullImage.src} alt="" />
 				</div>
-				<div>
+				<div class="profile-shield">
 					<img src={data.shieldImage.src} alt="" />
 				</div>
+				<div className="profile-bio">
+					<h1>{data.hero}</h1>
+					<h2>Successfully Deployed</h2>
+					<p>{data.bio}</p>
+					<p>Total earthquakes attended: {data.total}</p>
+					<p>Vacation days accrued: {vacationDays}</p>
+				</div>
+				
 			</div>
 		</div>
 	);

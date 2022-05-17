@@ -633,6 +633,88 @@ a {
   color: #00a9ae;
 }
 
+.hero-profile-page {
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: lightblue;
+}
+.hero-profile-page h1 {
+  font-size: 36px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 50px;
+}
+.hero-profile-page h1:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  height: 2px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+}
+
+.hero-profile-page .wrapper {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: #ffffff;
+  max-width: 900px;
+  display: grid;
+  grid-template-rows: 40px 250px 250px;
+  grid-template-columns: 0.75fr 1fr 1fr;
+  grid-template-areas: "fullImg close close" "fullImg bio bio" "shield bio bio";
+}
+.hero-profile-page .wrapper .close-btn {
+  grid-area: close;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.hero-profile-page .wrapper .profile-full-img {
+  grid-area: fullImg;
+}
+.hero-profile-page .wrapper .profile-shield {
+  grid-area: shield;
+}
+.hero-profile-page .wrapper .profile-bio {
+  grid-area: bio;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.hero-profile-page .wrapper .close-btn,
+.hero-profile-page .wrapper .profile-bio {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0 10px;
+}
+
 /* Portrait tablet and small desktops */
 @media (max-width: 960px) {
   .home-page h1 .title {
