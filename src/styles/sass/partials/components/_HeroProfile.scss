@@ -67,6 +67,10 @@
 
 .profile-shield {
     grid-area: shield;
+    img {
+        height: auto;
+        width: 100%;
+    }
 }
 
 .profile-bio {
