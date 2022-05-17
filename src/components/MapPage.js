@@ -318,7 +318,7 @@ const MapPage = ({}) => {
 						<a href="https://www.nicolebeckles.dev/" target="_blank" rel="noopener noreferrer"> Nicole Beckles | </a>
 						<a href="https://www.royalbai.com" target="_blank" rel="noopener noreferrer">Royal Bai | </a>
 						<a href="https://www.gabrielwright.ca" target="_blank" rel="noopener noreferrer">Gabriel Wright | </a>
-						<a href="https://www.ellegassner.ca" target="_blank" rel="noopener noreferrer">Elle Gassner </a> at
+							<a href="https://www.ellegassner.com/" target="_blank" rel="noopener noreferrer">Elle Gassner </a> at
 						<a href="https://junocollege.com/" target="_blank" rel="noopener noreferrer"> Juno College of Technology</a>
 					</footer>
 				</div>

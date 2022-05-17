@@ -344,6 +344,7 @@ img {
 footer {
   color: #ffffff;
   margin-top: 150px;
+  padding-bottom: 150px;
 }
 footer a {
   color: inherit;
@@ -551,11 +552,7 @@ footer a {
 
 .home-page {
   background-color: #000000;
-  height: 1200px;
   text-align: center;
-}
-.home-page .wrapper {
-  background-color: #000000;
 }
 .home-page img {
   height: 400px;
@@ -590,7 +587,6 @@ footer a {
 
 .questions-page {
   background-color: #000000;
-  height: 1200px;
   text-align: center;
   color: #ffffff;
 }
