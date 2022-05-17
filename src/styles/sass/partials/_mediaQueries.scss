@@ -2,8 +2,6 @@
 @media (max-width: 960px) {
     // Home page
     .home-page {
-        height: 100vh;
-
         h1 {
             padding-top: 125px;
 
@@ -26,7 +24,6 @@
         }
 
         footer {
-            margin-top: 30px;
             font-size: $fs-200;
         }
     }
