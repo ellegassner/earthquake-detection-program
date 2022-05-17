@@ -23,9 +23,11 @@ const HeroProfile = () => {
 				<div className="profile-bio">
 					<h1>{data.hero}</h1>
 					<h2>Successfully Deployed</h2>
-					<p>{data.bio}</p>
-					<p>Total earthquakes attended: {data.total}</p>
-					<p>Vacation days accrued: {vacationDays}</p>
+					<div>
+						<p>{data.bio}</p>
+						<p>Total earthquakes attended: {data.total}</p>
+						<p>Vacation days accrued: {vacationDays}</p>
+					</div>
 				</div>
 				
 			</div>
