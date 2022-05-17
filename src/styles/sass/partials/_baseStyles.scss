@@ -1,0 +1,76 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-size: 125%;
+}
+
+body {
+	margin: 0 auto;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.wrapper {
+	max-width: 1260px;
+	width: 95%;
+	margin: 0 auto;
+}
+
+img {
+    display:block;
+    height:100%;
+}
+
+.teal-background {
+    background-color: $clr-teal;
+}
+
+.purple-background {
+    background-color: $clr-purple;
+}
+
+.blue-background {
+    background-color: $clr-blue;
+}
+
+.dark-purple-background {
+    background-color: $clr-dark-purple;
+}
+
+.btn {
+    font-family: $ff-secondary;
+    font-size: $fs-200;
+    font-weight: $fw-bold;
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    border: 2px solid $clr-white;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+
+    &:hover,
+    &:focus {
+        color: $clr-teal;
+        border: 2px solid $clr-teal;
+    }
+}
+
+footer {
+	color: $clr-white;
+	margin-top: 150px;
+    padding-bottom: 150px;
+
+	a {
+		color: inherit;
+	}
+}

@@ -1,0 +1,14 @@
+@import "./partials/setup";
+@import "./partials/variables";
+@import "./partials/typography";
+@import "./partials/baseStyles.scss";
+
+// component partials
+@import "./partials/components/MapPage";
+@import "./partials/components/HeroTotalDisplay";
+@import "./partials/components/TodaysTotalHeroDisplay.scss";
+@import "./partials/components/HomePage.scss";
+@import "./partials/components/QuestionsPage.scss";
+@import "./partials/components/HeroProfile";
+
+@import "./partials/mediaQueries";
