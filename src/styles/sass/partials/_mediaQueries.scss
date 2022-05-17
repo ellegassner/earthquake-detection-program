@@ -1,0 +1,289 @@
+/* Portrait tablet and small desktops */
+@media (max-width: 960px) {
+    // Home page
+    .home-page {
+        h1 {
+            .title {
+                font-size: $fs-550;
+            }
+
+            .right-align {
+                padding-right: 65px;
+            }
+
+            .left-align {
+                padding-left: 65px;
+            }
+        }
+
+        .left-align,
+        .right-align {
+            font-size: $fs-500;
+        }
+    }
+
+    // Questions page
+    .questions-page {
+        div {
+            h2 {
+                font-size: $fs-550;
+            }
+
+            p {
+                font-size: $fs-400;
+            }
+        }
+    }
+
+    // Map pages
+    .mag-legend  {
+        margin-left: 10px;
+    }
+    
+    .map {
+        height: 400px;
+    }
+
+    .map-page {
+        flex-direction: column;
+
+        .map-container {
+            width: 95%;
+            margin-left: 0%;
+
+            h1 {
+                font-size: $fs-550;
+            }
+        }
+
+        .legend-container {
+            width: 95%;
+            padding-top: 30px;
+            position: relative;
+        }
+
+        .total-display {
+            h2 {
+                font-size: $fs-400;
+            }
+
+            ul {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .today-total {
+            margin: 20px 20px;
+        }
+
+        .todays-display {
+            h2 {
+                font-size: $fs-400;
+            }
+        }
+
+        .btn {
+            margin: 20px auto;
+        }
+    }
+
+    .hero-total {
+        height: 75px;
+        width: 150px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 810px) {
+    // Home page
+    .home-page {
+        h1 {
+            .right-align {
+                padding-right: 5px;
+            }
+
+            .left-align {
+                padding-left: 5px;
+            }
+        }
+    }
+
+    // Questions page
+    .questions-page {
+        div {
+            p {
+                font-size: $fs-300;
+            }
+        }
+    }
+
+    // Map page
+    .map-page {
+        .hero-total {
+            width: 130px;
+        }
+
+        .today-total {
+            margin: 20px 20px;
+        }
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 770px) {
+    // Home page
+    .home-page {
+        h1 {
+            .title {
+                font-size: $fs-500;
+            }
+            .right-align {
+                font-size: $fs-400;
+                padding-right: 35px;
+            }
+
+            .left-align {
+                font-size: $fs-400;
+                padding-left: 35px;
+            }
+        }
+    }
+
+    // Questions page
+    .questions-page {
+        div {
+            h2 {
+                font-size: $fs-500;
+            }
+
+            p {
+                font-size: $fs-400;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    // Home page
+    .home-page {
+        h1 {
+            .right-align {
+                padding-right: 0;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            .left-align {
+                padding-left: 0;
+                text-align: center;
+                padding: 20px 0;
+            }
+        }
+
+        div {
+            img {
+                height: 300px;
+            }
+        }
+    }
+
+    // Map page
+    .map-page {
+        .hero-total {
+                width: 300px;
+            }
+
+        .total-display {
+            ul {
+                flex-direction: column;
+            }
+        }
+
+        .today-total {
+            margin: 20px 40px;
+        }
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    // Home page
+    .home-page {
+        div {
+            img {
+                height: 250px;
+            }
+        }
+    }
+
+    // Questions page
+    .questions-page {
+        div {
+            nav {
+                text-align: center;
+            }
+        }
+    }
+
+    // Map page
+    .outer-map-page {
+        div {
+            .home-icon-map-page {
+                width: 100%;
+                margin-left: 0;
+
+                nav {
+                    text-align: center;
+                }
+            }
+        }
+        
+    }
+
+    .map-page {
+        .map-title-legend {
+                flex-direction: column;
+                text-align: center;
+                padding-bottom: 20px;
+            }
+        
+        .map-container {
+            .btn {
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+        }
+
+        .today-total {
+            margin: 20px;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    // Home page
+    .home-page {
+        div {
+            img {
+                height: 200px;
+                margin-top: -50px;
+            }
+        }
+    }
+
+    // Questions page
+    .App {
+        .questions-page {
+            height: 1300px;
+        }
+    }
+    
+    // Map page 
+    .map-page {
+
+        .today-total {
+            margin: 10px;
+        }
+    }
+}

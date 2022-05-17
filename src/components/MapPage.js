@@ -1,14 +1,18 @@
-import { Link } from "react-router-dom";
+// Components
 import Map from "./Map";
 import TotalEarthquakeDisplay from "./TotalEarthquakeDisplay";
 import TodaysEarthquakeDisplay from "./TodaysEarthquakeDisplay";
+import MagLegend from "./MagLegend";
 
 // Firebase Config
 import firebase from "../firebase";
 import { getDatabase, ref, set, get } from "firebase/database";
-//modules
+
+// Modules
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
 // Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
@@ -283,19 +287,19 @@ const MapPage = ({}) => {
 				<p>Loading... Please wait</p>
 			) : (
 				<div>
-					<div>
+					<div className="home-icon-map-page">
 						<nav>
 							<Link to="/"><FontAwesomeIcon icon={faHouse}/></Link>
-							<Link to="/questionspage" className="btn">Questions?</Link>
 						</nav>
-						<div className="mag-legend">
-							<h3>Magnitudes legend</h3>
-						</div>
 					</div>
 					<div className="map-page">
-						<div>
-							<h1>Earthquakes (Past 24hrs)</h1>
+						<div className="map-container">
+							<div className="map-title-legend">
+								<h1>Earthquakes (Past 24hrs)</h1>
+								<MagLegend />
+							</div>
 							<Map earthquakesData={todaysEarthquakeData} />
+							<Link to="/questionspage" className="btn">Questions?</Link>
 						</div>
 						<div className="legend-container">
 							<TotalEarthquakeDisplay
