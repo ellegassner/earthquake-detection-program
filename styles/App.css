@@ -342,181 +342,11 @@ a {
   margin: 0 auto;
 }
 
-/* Portrait tablet and small desktops */
-@media (max-width: 960px) {
-  .home-page h1 .title {
-    font-size: 30px;
-  }
-  .home-page h1 .right-align {
-    padding-right: 65px;
-  }
-  .home-page h1 .left-align {
-    padding-left: 65px;
-  }
-  .home-page .left-align,
-.home-page .right-align {
-    font-size: 26px;
-  }
-
-  .questions-page div h2 {
-    font-size: 30px;
-  }
-  .questions-page div p {
-    font-size: 22px;
-  }
-
-  .map-page {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .map-page .map-container {
-    width: 95%;
-    margin-left: 0%;
-  }
-  .map-page .legend-container {
-    width: 95%;
-    padding-top: 30px;
-  }
-  .map-page .total-display ul {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .map-page .today-total {
-    margin: 20px 80px;
-  }
-}
-@media (max-width: 810px) {
-  .home-page h1 .right-align {
-    padding-right: 5px;
-  }
-  .home-page h1 .left-align {
-    padding-left: 5px;
-  }
-
-  .questions-page div p {
-    font-size: 20px;
-  }
-
-  .map-page .hero-total {
-    width: 180px;
-  }
-  .map-page .today-total {
-    margin: 20px 60px;
-  }
-}
-/* Landscape phone to portrait tablet */
-@media (max-width: 770px) {
-  .home-page h1 .title {
-    font-size: 26px;
-  }
-  .home-page h1 .right-align {
-    font-size: 22px;
-    padding-right: 35px;
-  }
-  .home-page h1 .left-align {
-    font-size: 22px;
-    padding-left: 35px;
-  }
-
-  .questions-page div h2 {
-    font-size: 26px;
-  }
-  .questions-page div p {
-    font-size: 22px;
-  }
-}
-@media (max-width: 600px) {
-  .home-page h1 .right-align {
-    padding-right: 0;
-    text-align: center;
-    padding: 20px 0;
-  }
-  .home-page h1 .left-align {
-    padding-left: 0;
-    text-align: center;
-    padding: 20px 0;
-  }
-  .home-page div img {
-    height: 300px;
-  }
-
-  .map-page .hero-total {
-    width: 300px;
-  }
-  .map-page .total-display ul {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .map-page .today-total {
-    margin: 20px 40px;
-  }
-}
-/* Landscape phones and down */
-@media (max-width: 480px) {
-  .home-page div img {
-    height: 250px;
-  }
-
-  .questions-page div nav {
-    text-align: center;
-  }
-
-  .outer-map-page div .home-icon-map-page {
-    width: 100%;
-    margin-left: 0;
-  }
-  .outer-map-page div .home-icon-map-page nav {
-    text-align: center;
-  }
-
-  .map-page .map-title-legend {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    text-align: center;
-    padding-bottom: 20px;
-  }
-  .map-page .map-container .btn {
-    margin: 0 auto;
-    margin-top: 10px;
-  }
-  .map-page .today-total {
-    margin: 20px;
-  }
-}
-@media (max-width: 420px) {
-  .home-page div img {
-    height: 200px;
-    margin-top: -50px;
-  }
-
-  .App .questions-page {
-    height: 1300px;
-  }
-
-  .map-page .today-total {
-    margin: 10px;
-  }
-}
 .outer-map-page .home-icon-map-page {
   width: 65%;
   margin-left: 2%;
   padding-top: 15px;
-}
-.outer-map-page .nav-legend-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  position: relative;
 }
 .outer-map-page nav {
   text-align: left;
@@ -589,6 +419,11 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.map-page .legend-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 .map-page .btn {
   color: #000000;
@@ -796,4 +631,198 @@ a {
 }
 .questions-page nav a:hover, .questions-page nav a:focus {
   color: #00a9ae;
+}
+
+/* Portrait tablet and small desktops */
+@media (max-width: 960px) {
+  .home-page h1 .title {
+    font-size: 30px;
+  }
+  .home-page h1 .right-align {
+    padding-right: 65px;
+  }
+  .home-page h1 .left-align {
+    padding-left: 65px;
+  }
+  .home-page .left-align,
+.home-page .right-align {
+    font-size: 26px;
+  }
+
+  .questions-page div h2 {
+    font-size: 30px;
+  }
+  .questions-page div p {
+    font-size: 22px;
+  }
+
+  .mag-legend {
+    margin-left: 10px;
+  }
+
+  .map {
+    height: 400px;
+  }
+
+  .map-page {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .map-page .map-container {
+    width: 95%;
+    margin-left: 0%;
+  }
+  .map-page .map-container h1 {
+    font-size: 30px;
+  }
+  .map-page .legend-container {
+    width: 95%;
+    padding-top: 30px;
+    position: relative;
+  }
+  .map-page .total-display h2 {
+    font-size: 22px;
+  }
+  .map-page .total-display ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .map-page .today-total {
+    margin: 20px 20px;
+  }
+  .map-page .todays-display h2 {
+    font-size: 22px;
+  }
+  .map-page .btn {
+    margin: 20px auto;
+  }
+
+  .hero-total {
+    height: 75px;
+    width: 150px;
+    margin: 10px;
+  }
+}
+@media (max-width: 810px) {
+  .home-page h1 .right-align {
+    padding-right: 5px;
+  }
+  .home-page h1 .left-align {
+    padding-left: 5px;
+  }
+
+  .questions-page div p {
+    font-size: 20px;
+  }
+
+  .map-page .hero-total {
+    width: 130px;
+  }
+  .map-page .today-total {
+    margin: 20px 20px;
+  }
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 770px) {
+  .home-page h1 .title {
+    font-size: 26px;
+  }
+  .home-page h1 .right-align {
+    font-size: 22px;
+    padding-right: 35px;
+  }
+  .home-page h1 .left-align {
+    font-size: 22px;
+    padding-left: 35px;
+  }
+
+  .questions-page div h2 {
+    font-size: 26px;
+  }
+  .questions-page div p {
+    font-size: 22px;
+  }
+}
+@media (max-width: 600px) {
+  .home-page h1 .right-align {
+    padding-right: 0;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .home-page h1 .left-align {
+    padding-left: 0;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .home-page div img {
+    height: 300px;
+  }
+
+  .map-page .hero-total {
+    width: 300px;
+  }
+  .map-page .total-display ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .map-page .today-total {
+    margin: 20px 40px;
+  }
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .home-page div img {
+    height: 250px;
+  }
+
+  .questions-page div nav {
+    text-align: center;
+  }
+
+  .outer-map-page div .home-icon-map-page {
+    width: 100%;
+    margin-left: 0;
+  }
+  .outer-map-page div .home-icon-map-page nav {
+    text-align: center;
+  }
+
+  .map-page .map-title-legend {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .map-page .map-container .btn {
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .map-page .today-total {
+    margin: 20px;
+  }
+}
+@media (max-width: 420px) {
+  .home-page div img {
+    height: 200px;
+    margin-top: -50px;
+  }
+
+  .App .questions-page {
+    height: 1300px;
+  }
+
+  .map-page .today-total {
+    margin: 10px;
+  }
 }

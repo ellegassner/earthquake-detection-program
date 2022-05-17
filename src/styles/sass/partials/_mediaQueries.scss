@@ -4,7 +4,7 @@
     .home-page {
         h1 {
             .title {
-            font-size: $fs-550;
+                font-size: $fs-550;
             }
 
             .right-align {
@@ -35,21 +35,38 @@
         }
     }
 
-    // Map page
+    // Map pages
+    .mag-legend  {
+        margin-left: 10px;
+    }
+    
+    .map {
+        height: 400px;
+    }
+
     .map-page {
         flex-direction: column;
 
         .map-container {
             width: 95%;
             margin-left: 0%;
+
+            h1 {
+                font-size: $fs-550;
+            }
         }
 
         .legend-container {
             width: 95%;
             padding-top: 30px;
+            position: relative;
         }
 
         .total-display {
+            h2 {
+                font-size: $fs-400;
+            }
+
             ul {
                 flex-direction: row;
                 justify-content: center;
@@ -57,8 +74,24 @@
         }
 
         .today-total {
-            margin: 20px 80px;
+            margin: 20px 20px;
         }
+
+        .todays-display {
+            h2 {
+                font-size: $fs-400;
+            }
+        }
+
+        .btn {
+            margin: 20px auto;
+        }
+    }
+
+    .hero-total {
+        height: 75px;
+        width: 150px;
+        margin: 10px;
     }
 }
 
@@ -88,11 +121,11 @@
     // Map page
     .map-page {
         .hero-total {
-            width: 180px;
+            width: 130px;
         }
 
         .today-total {
-            margin: 20px 60px;
+            margin: 20px 20px;
         }
     }
 }

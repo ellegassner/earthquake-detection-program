@@ -3,10 +3,7 @@
 		width: 65%;
 		margin-left: 2%;
 		padding-top: 15px;
-	}
-
-	.nav-legend-container {
-		display: flex;
+		position: relative;
 	}
 
 	nav {
@@ -77,6 +74,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	.legend-container {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+	}
 
 	.btn {
 			color: $clr-black;
