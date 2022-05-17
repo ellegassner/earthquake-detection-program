@@ -7,7 +7,8 @@ const HeroTotalDisplay = ({hero, total, bio, fullImage, shieldImage, icon, color
         bio: bio,
         total: total,
         fullImage: fullImage,
-        shieldImage: shieldImage
+        shieldImage: shieldImage,
+        color:color,
     };
 
 
