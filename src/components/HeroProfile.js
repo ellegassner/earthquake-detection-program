@@ -14,10 +14,10 @@ const HeroProfile = () => {
 		<div className="hero-profile-page">
 			<div className="wrapper">
 				<Link to="/mappage" className="close-btn"><FontAwesomeIcon icon={faXmark}/></Link>
-				<div class="profile-full-img">
+				<div className="profile-full-img">
 					<img src={data.fullImage.src} alt="" />
 				</div>
-				<div class="profile-shield">
+				<div className={`profile-shield ${data.color}-background`}>
 					<img src={data.shieldImage.src} alt="" />
 				</div>
 				<div className="profile-bio">
