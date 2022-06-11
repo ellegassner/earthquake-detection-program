@@ -33,7 +33,8 @@
 - Slack
 
 ## Technical Wins:
-- Successfully collaborating with other developers on project using Git branching, pair programming, and review
+- Successfully collaborating with other developers using Git branching, pair programming, and code review
+- Passing information between display components and setting up routing between pages
 - Creating our own custom map markers and getting them to render onto the map correctly
 
 ## Team Wins:
