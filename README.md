@@ -13,7 +13,7 @@
 - To store each hero's tally persistently in a Firebase database
 - To calculate how many vacation days each hero accrues based on their incident tally
 
-## Team Members:
+## Team members:
 - Elle Gassner
 - Gabriel Wright
 - Royal Bai
@@ -32,12 +32,12 @@
 - Trello
 - Slack
 
-## Technical Wins:
+## Technical wins:
 - Successfully collaborating with other developers using Git branching, pair programming, and code review
 - Passing information between display components and setting up routing between pages
 - Creating our own custom map markers and getting them to render onto the map correctly
 
-## Team Wins:
+## Team wins:
 - Clearly communicating expectations and setting ground rules before starting to code
 - Scheduling regular meetings with rotating meeting minute duty to capture action items and next steps
 - Leveraging process mapping tool (Miro) to visualize features, data flow, and user journey mapping
