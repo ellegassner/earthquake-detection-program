@@ -3,12 +3,6 @@
 ## Live site:
 - https://earthquake-detection-program.netlify.app/
 
-## Contributors:
-- Elle Gassner
-- Gabriel Wright
-- Royal Bai
-- Nicole Beckles
-
 ## Objectives:
 - To request earthquake data from the USGS API as JSON
 - To parse the earthquake data for key information about each incident (i.e. latitude, longitude, magnitude)
@@ -18,6 +12,12 @@
 - To create a running tally of how many incidents each superhero has resolved
 - To store each hero's tally persistently in a Firebase database
 - To calculate how many vacation days each hero accrues based on their incident tally
+
+## Team Members:
+- Elle Gassner
+- Gabriel Wright
+- Royal Bai
+- Nicole Beckles
 
 ## Technology used:
 - HTML5
