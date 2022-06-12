@@ -36,6 +36,7 @@
 - Successfully collaborating with other developers using Git branching, pair programming, and code review
 - Passing information between display components and setting up routing between pages
 - Creating our own custom map markers and getting them to render onto the map correctly
+- Storing incidents in Firebase, updating state, and passing props into modal components
 
 ## Team wins:
 - Clearly communicating expectations and setting ground rules before starting to code
