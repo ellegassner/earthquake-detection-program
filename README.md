@@ -1,4 +1,4 @@
-# Earthquake Detection App
+# Earthquake Detection Program
 
 ## Live site:
 - https://earthquake-detection-program.netlify.app/
