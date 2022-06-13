@@ -4,7 +4,7 @@
 - https://earthquake-detection-program.netlify.app/
 
 ## Objectives:
-- To request earthquake data from the USGS API as JSON
+- To request earthquake data from the USGS API
 - To parse the earthquake data for key information about each incident (i.e. latitude, longitude, magnitude)
 - To create markers on a map using the React Leaflet API
 - To place different color markers for each earthquake based on the magnitude
