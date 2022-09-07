@@ -180,6 +180,9 @@
 	.map-page {
 		.hero-total {
 			width: 130px;
+			p {
+				font-size: $fs-100;
+			}
 		}
 	}
 }

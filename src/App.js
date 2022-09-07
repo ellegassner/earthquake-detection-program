@@ -24,7 +24,8 @@ function App() {
 	const BUILDING = "Building app...";
 
 	// state
-	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
+	const [allEarthquakeData, setAllEarthquakeData] = useState();
+	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState();
 	const [heroesSummary, setHeroesSummary] = useState([]);
 	const [firstIncidentDate, setFirstIncidentDate] = useState([]);
 	const [animation, setAnimation] = useState("fade-in");
@@ -56,7 +57,7 @@ function App() {
 					const displayDate = firstDate.toDateString();
 
 					setFirstIncidentDate(displayDate);
-					loadDataToFirebase(listOfEarthquakes);
+					loadAPIData(listOfEarthquakes);
 				} else {
 					throw new Error("Problem fetching from USGS API");
 				}
@@ -69,12 +70,23 @@ function App() {
 	}, []);
 
 	useEffect(() => {
+		if (todaysEarthquakeData && allEarthquakeData) {
+			const todaysCount = getTotals(todaysEarthquakeData);
+			const totalCount = getTotals(allEarthquakeData);
+
+			getHeroesSummary(totalCount, todaysCount);
+
+			setIsLoading(false);
+		}
+	}, [todaysEarthquakeData, allEarthquakeData]);
+
+	useEffect(() => {
 		if (status === BUILDING) {
 			setAnimation("fade-out");
 		}
 	}, [status]);
 
-	const loadDataToFirebase = async (earthquakesData) => {
+	const loadAPIData = async (earthquakesData) => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/incidents/2022-05-05`);
 
@@ -83,11 +95,8 @@ function App() {
 
 			await set(dbRef, earthquakesData);
 			await getDataFromFirebase(dbRef);
-			const todaysCount = getTotals(todaysEarthquakeData);
-			const totalCount = getTotals(earthquakesData);
-			getHeroesSummary(totalCount, todaysCount);
 
-			setIsLoading(false);
+			setAllEarthquakeData(earthquakesData);
 		} catch (error) {
 			alert(
 				"Firebase data has failed to load. Please refresh your browser."
