@@ -8,7 +8,7 @@ const QuestionsPage = () => {
 	return (
 		<div className="questions-page">
 			<div className="wrapper">
-				<nav className="wrapper">
+				<nav>
 					<Link to="/">
 						<FontAwesomeIcon icon={faHouse} />
 					</Link>
