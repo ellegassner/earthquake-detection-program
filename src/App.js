@@ -23,19 +23,13 @@ function App() {
 	const LOADING = "Fetching data...";
 	const BUILDING = "Building app...";
 
+	// state
 	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
 	const [heroesSummary, setHeroesSummary] = useState([]);
 	const [firstIncidentDate, setFirstIncidentDate] = useState([]);
-	const [fade, setFade] = useState("fade-in");
-
+	const [animation, setAnimation] = useState("fade-in");
 	const [isLoading, setIsLoading] = useState(true);
 	const [status, setStatus] = useState(LOADING);
-
-	useEffect(() => {
-		if (status === BUILDING) {
-			setFade("fade-out");
-		}
-	}, [status]);
 
 	useEffect(() => {
 		axios({
@@ -73,6 +67,12 @@ function App() {
 				);
 			});
 	}, []);
+
+	useEffect(() => {
+		if (status === BUILDING) {
+			setAnimation("fade-out");
+		}
+	}, [status]);
 
 	const loadDataToFirebase = async (earthquakesData) => {
 		const database = getDatabase(firebase);
@@ -251,7 +251,7 @@ function App() {
 		<div className="App">
 			{isLoading ? (
 				<div className="loader-container">
-					<p className={fade}>{status}</p>
+					<p className={animation}>{status}</p>
 					<div className="loader"></div>
 				</div>
 			) : (

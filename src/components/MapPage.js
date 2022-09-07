@@ -29,11 +29,13 @@ const MapPage = ({
 				<div className="map-page">
 					<div className="map-container">
 						<div className="map-title-legend">
-							<div>
-								<h1>Earthquakes (Past 24hrs)</h1>
+							<div className="map-title-container">
+								<h1>
+									Earthquakes <span>(Past 24 hrs)</span>
+								</h1>
 								<p>
-									Click on the map markers to learn more about
-									each incident.
+									Click on the map markers to learn about the
+									incidents.
 								</p>
 							</div>
 							<MagLegend />

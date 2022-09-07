@@ -1,3 +1,52 @@
+@media (max-width: 1330px) {
+	// Map page
+	.map-page {
+		.map-title-container {
+			h1 {
+				font-size: $fs-600;
+			}
+
+			p {
+				max-width: 450px;
+			}
+		}
+		.mag-legend {
+			top: -10px;
+		}
+	}
+}
+@media (max-width: 1260px) {
+	.map-page {
+		.map-title-container {
+			span {
+				display: block;
+			}
+			p {
+				max-width: 315px;
+			}
+		}
+		.mag-legend {
+			top: -30px;
+		}
+	}
+}
+
+@media (max-width: 1180px) {
+	.map-page {
+		.today-total {
+			margin: 10px 5px;
+		}
+	}
+}
+
+@media (max-width: 1015px) {
+	.map-page {
+		.today-total {
+			margin: 10px 3px;
+		}
+	}
+}
+
 /* Portrait tablet and small desktops */
 @media (max-width: 960px) {
 	// Home page
@@ -43,16 +92,17 @@
 	}
 
 	// Map pages
-	.mag-legend {
-		margin-left: 10px;
-	}
-
-	.map {
-		height: 400px;
-	}
-
 	.map-page {
 		flex-direction: column;
+
+		.mag-legend {
+			margin-left: 10px;
+			top: -25px;
+		}
+
+		.map {
+			height: 400px;
+		}
 
 		.map-container {
 			width: 95%;
@@ -81,7 +131,7 @@
 		}
 
 		.today-total {
-			margin: 20px 20px;
+			margin: 20px 40px;
 		}
 
 		.todays-display {
@@ -131,10 +181,6 @@
 		.hero-total {
 			width: 130px;
 		}
-
-		.today-total {
-			margin: 20px 20px;
-		}
 	}
 }
 
@@ -172,7 +218,22 @@
 	}
 }
 
-@media (max-width: 600px) {
+// Hero Profile Page
+@media (max-width: 715px) {
+	.hero-profile-page .wrapper {
+		box-shadow: none;
+		width: 100%;
+		height: 100vh;
+		grid-template-rows: 40px 1fr auto;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"close close"
+			"bio bio"
+			"fullImg shield";
+	}
+}
+
+@media (max-width: 640px) {
 	// Home page
 	.home-page {
 		h1 {
@@ -189,35 +250,6 @@
 			}
 		}
 
-		div {
-			img {
-				height: 300px;
-			}
-		}
-	}
-
-	// Map page
-	.map-page {
-		.hero-total {
-			width: 300px;
-		}
-
-		.total-display {
-			ul {
-				flex-direction: column;
-			}
-		}
-
-		.today-total {
-			margin: 20px 40px;
-		}
-	}
-}
-
-/* Landscape phones and down */
-@media (max-width: 480px) {
-	// Home page
-	.home-page {
 		div {
 			img {
 				height: 250px;
@@ -255,25 +287,42 @@
 			text-align: center;
 			padding-bottom: 20px;
 		}
+		.map-title-container {
+			p {
+				margin: 0;
+			}
+		}
 
 		.map-container {
 			.btn {
 				margin: 0 auto;
-				margin-top: 10px;
+				margin-top: 30px;
+			}
+		}
+
+		.hero-total {
+			width: 300px;
+		}
+
+		.total-display {
+			ul {
+				flex-direction: column;
 			}
 		}
 
 		.today-total {
-			margin: 20px;
+			margin: 20px 25px;
 		}
 	}
 
 	.mag-legend {
 		padding-top: 25px;
+		position: static;
 	}
 }
 
-@media (max-width: 420px) {
+/* Landscape phones and down */
+@media (max-width: 480px) {
 	// Home page
 	.home-page {
 		div {
@@ -287,23 +336,8 @@
 	// Map page
 	.map-page {
 		.today-total {
-			margin: 10px;
+			margin: 20px 10px;
 		}
-	}
-}
-
-// Hero Profile Page
-@media (max-width: 715px) {
-	.hero-profile-page .wrapper {
-		box-shadow: none;
-		width: 100%;
-		height: 100vh;
-		grid-template-rows: 40px 1fr auto;
-		grid-template-columns: 1fr 1fr;
-		grid-template-areas:
-			"close close"
-			"bio bio"
-			"fullImg shield";
 	}
 }
 
