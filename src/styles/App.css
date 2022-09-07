@@ -609,6 +609,9 @@ footer a {
       -ms-flex-align: center;
           align-items: center;
 }
+.total-display ul li {
+  width: 100%;
+}
 .total-display ul li:hover, .total-display ul li:focus {
   background-color: #f4f4f4;
 }
