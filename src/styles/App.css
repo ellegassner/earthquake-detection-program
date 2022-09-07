@@ -283,10 +283,12 @@ img {
 
 html {
   font-size: 125%;
+  height: 100%;
 }
 
 body {
   margin: 0 auto;
+  height: 100%;
 }
 
 ul {
@@ -344,7 +346,7 @@ img {
 footer {
   color: #ffffff;
   margin-top: 150px;
-  padding-bottom: 100px;
+  padding-bottom: 10px;
 }
 footer a {
   color: inherit;
@@ -553,6 +555,7 @@ footer a {
 .home-page {
   background-color: #000000;
   text-align: center;
+  min-height: 100vh;
 }
 .home-page img {
   height: 400px;
@@ -589,6 +592,7 @@ footer a {
   background-color: #000000;
   text-align: center;
   color: #ffffff;
+  min-height: 100vh;
 }
 .questions-page img {
   width: 30%;
