@@ -19,19 +19,26 @@ import HeroProfile from "./components/HeroProfile";
 import ErrorPage from "./components/ErrorPage";
 
 function App() {
+	// loader messages
+	const LOADING = "Fetching data...";
+	const BUILDING = "Building app...";
+
 	const [todaysEarthquakeData, setTodaysEarthquakeData] = useState([]);
 	const [heroesSummary, setHeroesSummary] = useState([]);
 	const [firstIncidentDate, setFirstIncidentDate] = useState([]);
+	const [fade, setFade] = useState("fade-in");
 
 	const [isLoading, setIsLoading] = useState(true);
-	const [status, setStatus] = useState("Loading... Please wait");
+	const [status, setStatus] = useState(LOADING);
 
 	useEffect(() => {
-		getEqDataFromApi();
-	}, []);
+		if (status === BUILDING) {
+			setFade("fade-out");
+		}
+	}, [status]);
 
-	const getEqDataFromApi = async () => {
-		await axios({
+	useEffect(() => {
+		axios({
 			url: "https://earthquake.usgs.gov/fdsnws/event/1/query",
 			method: "GET",
 			dataResponse: "json",
@@ -46,7 +53,6 @@ function App() {
 		})
 			.then((response) => {
 				if (response.status === 200) {
-					setStatus("Fetching USGS API data");
 					const listOfEarthquakes = response.data.features;
 					const firstDate = new Date(
 						listOfEarthquakes[
@@ -56,29 +62,27 @@ function App() {
 					const displayDate = firstDate.toDateString();
 
 					setFirstIncidentDate(displayDate);
-					loadDataToFirebase(listOfEarthquakes); // runs first
+					loadDataToFirebase(listOfEarthquakes);
 				} else {
-					throw new Error("Problem fetching");
+					throw new Error("Problem fetching from USGS API");
 				}
 			})
 			.catch((err) => {
 				alert(
-					`USGS API call failed. Please hard refresh your browser with CTRL/CMD + SHIFT + R. Here is the error message : ${err.message}`
+					`Please hard refresh your browser with CTRL/CMD + SHIFT + R. Error message: ${err.message}`
 				);
 			});
-	};
+	}, []);
 
 	const loadDataToFirebase = async (earthquakesData) => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/incidents/2022-05-05`);
 
 		try {
+			setStatus(BUILDING);
+
 			await set(dbRef, earthquakesData);
-			setStatus("Loading new earthquake events to Firebase");
-
 			await getDataFromFirebase(dbRef);
-			setStatus("Comparing new events to existing events in Firebase");
-
 			const todaysCount = getTotals(todaysEarthquakeData);
 			const totalCount = getTotals(earthquakesData);
 			getHeroesSummary(totalCount, todaysCount);
@@ -246,8 +250,9 @@ function App() {
 	return (
 		<div className="App">
 			{isLoading ? (
-				<div className="loader">
-					<p>Status: {status}</p>
+				<div className="loader-container">
+					<p className={fade}>{status}</p>
+					<div className="loader"></div>
 				</div>
 			) : (
 				<Routes>
