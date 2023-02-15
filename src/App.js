@@ -39,7 +39,7 @@ function App() {
 			dataResponse: "json",
 			params: {
 				format: "geojson",
-				starttime: "2022-05-05",
+				starttime: "2023-01-01",
 				eventtype: "earthquake",
 				minmagnitude: 0,
 				orderby: "time",
